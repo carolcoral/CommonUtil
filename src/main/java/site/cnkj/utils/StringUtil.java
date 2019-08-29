@@ -52,7 +52,6 @@ public class StringUtil {
         return str;
     }
 
-
     /**
      * 格式化Exception为String
      * @param e Exception
@@ -64,6 +63,64 @@ public class StringUtil {
         String str = sw.toString();
         str = StringEscapeUtils.escapeJava(str);
         return str;
+    }
+    
+    /**
+     * Ascii转换为字符串
+     * @param value
+     * @return
+     */
+    public static String asciiToString(String value) {
+        StringBuffer sbu = new StringBuffer();
+        String[] chars = value.split(",");
+        for (int i = 0; i < chars.length; i++) {
+            sbu.append((char) Integer.parseInt(chars[i]));
+        }
+        return sbu.toString();
+    }
+
+    /**
+     * 将字符串转化为int数组
+     *
+     * @param str 带解析的字符串
+     * @return 转化而成的int数组
+     */
+    public static int[] parse(String str) {
+        int length = str.length();
+        int[] result = new int[length];
+        // 依次取得字符串中的每一个字符，并将其转化为数字，放进int数组中
+        for (int i = 0; i < length; i++) {
+            char c = str.charAt(i);
+            result[i] = Character.getNumericValue(c);
+        }
+        return result;
+    }
+
+    /**
+     * 根据指定字节串拆分字节
+     * @param delimiter 分割字节
+     * @param array 待分割字节
+     * @return 分割后字节串数组
+     */
+    public static List<byte[]> split(byte[] array, byte[] delimiter) {
+        List<byte[]> byteArrays = new LinkedList<>();
+        if (delimiter.length == 0) {
+            return byteArrays;
+        }
+        int begin = 0;
+
+        outer:
+        for (int i = 0; i < array.length - delimiter.length + 1; i++) {
+            for (int j = 0; j < delimiter.length; j++) {
+                if (array[i + j] != delimiter[j]) {
+                    continue outer;
+                }
+            }
+            byteArrays.add(Arrays.copyOfRange(array, begin, i));
+            begin = i + delimiter.length;
+        }
+        byteArrays.add(Arrays.copyOfRange(array, begin, array.length));
+        return byteArrays;
     }
 
 }
