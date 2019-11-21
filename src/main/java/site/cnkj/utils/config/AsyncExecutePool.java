@@ -1,6 +1,8 @@
 package site.cnkj.utils.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -18,6 +20,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 @ConditionalOnProperty(prefix="spring.async.pool",name = "corePoolSize",matchIfMissing = false)
 public class AsyncExecutePool implements AsyncConfigurer {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(AsyncExecutePool.class);
 
     @Autowired
     private AsyncThreadPoolConfig config;
@@ -44,10 +48,10 @@ public class AsyncExecutePool implements AsyncConfigurer {
 
         @Override
         public void handleUncaughtException(Throwable throwable, Method method, Object... obj) {
-            log.info("Exception message - " + throwable.getMessage());
-            log.info("Method name - " + method.getName());
+            LOGGER.info("Exception message - " + throwable.getMessage());
+            LOGGER.info("Method name - " + method.getName());
             for (Object param : obj) {
-                log.info("Parameter value - " + param);
+                LOGGER.info("Parameter value - " + param);
             }
         }
     }

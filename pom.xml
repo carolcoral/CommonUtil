@@ -123,10 +123,19 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.47</version>
         </dependency>
+
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.56</version>
+        </dependency>
+
+        <!--import lombok instant of to get/set-->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>
@@ -170,40 +179,40 @@
         </plugins>
     </build>
 
-    <licenses>
-        <license>
-            <name>Apache license 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
-            <distribution>repo</distribution>
-            <comments>A common utils jar for more than redis elasticsearch http</comments>
-        </license>
-    </licenses>
+    <!--<licenses>-->
+        <!--<license>-->
+            <!--<name>Apache license 2.0</name>-->
+            <!--<url>https://www.apache.org/licenses/LICENSE-2.0</url>-->
+            <!--<distribution>repo</distribution>-->
+            <!--<comments>A common utils jar for more than redis elasticsearch http</comments>-->
+        <!--</license>-->
+    <!--</licenses>-->
 
-    <developers>
-        <developer>
-            <name>liuxuewen</name>
-            <url>https://github.com/carolcoral</url>
-            <email>lxw@cnkj.site</email>
-        </developer>
-    </developers>
+    <!--<developers>-->
+        <!--<developer>-->
+            <!--<name>liuxuewen</name>-->
+            <!--<url>https://github.com/carolcoral</url>-->
+            <!--<email>lxw@cnkj.site</email>-->
+        <!--</developer>-->
+    <!--</developers>-->
 
-    <scm>
-        <connection>scm:git:https://github.com/carolcoral/CommonUtil.git</connection>
-        <developerConnection>scm:git:https://github.com/carolcoral/CommonUtil.git</developerConnection>
-        <url>https://github.com/carolcoral/CommonUtil</url>
-        <tag>v${project.version}</tag>
-    </scm>
+    <!--<scm>-->
+        <!--<connection>scm:git:https://github.com/carolcoral/CommonUtil.git</connection>-->
+        <!--<developerConnection>scm:git:https://github.com/carolcoral/CommonUtil.git</developerConnection>-->
+        <!--<url>https://github.com/carolcoral/CommonUtil</url>-->
+        <!--<tag>v${project.version}</tag>-->
+    <!--</scm>-->
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexus-releases</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Maven Central Staging Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven3/</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<snapshotRepository>-->
+            <!--<id>nexus-releases</id>-->
+            <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+        <!--</snapshotRepository>-->
+        <!--<repository>-->
+            <!--<id>nexus-releases</id>-->
+            <!--<name>Maven Central Staging Repository</name>-->
+            <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven3/</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 
 </project>
