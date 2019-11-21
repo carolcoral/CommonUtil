@@ -32,21 +32,15 @@ public class FileUtil {
     }
 
     public static Boolean checkFileSize(File file, int num) {
-        Boolean flag = false;
         try {
             long size = file.length();
             long mb = 1048576;
             long res = size/(mb*num);
-            if (res > 0){
-                flag = true;
-            }else if (res <= 0){
-                flag = false;
-            }
+            return res > 0;
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            return flag;
         }
+        return false;
     }
 
     /**
@@ -102,18 +96,33 @@ public class FileUtil {
     }
 
     public static int getFileAllLineNumbers(File file) {
+        FileReader fileReader = null;
+        LineNumberReader lineNumberReader = null;
         try {
             if (file.isFile()){
-                FileReader fileReader = new FileReader(file);
-                LineNumberReader lineNumberReader = new LineNumberReader(fileReader);
+                fileReader = new FileReader(file);
+                lineNumberReader = new LineNumberReader(fileReader);
                 lineNumberReader.skip(Long.MAX_VALUE);
                 int totalLineNumber = lineNumberReader.getLineNumber();
-                lineNumberReader.close();
-                fileReader.close();
                 return totalLineNumber +1;
             }
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            if (fileReader != null){
+                try {
+                    fileReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (lineNumberReader != null){
+                try {
+                    lineNumberReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return -1;
     }

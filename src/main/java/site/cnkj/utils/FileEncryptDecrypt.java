@@ -8,6 +8,7 @@ import javax.crypto.spec.PSource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -66,11 +67,24 @@ public class FileEncryptDecrypt {
                 fileOutputStream.write(encrypted);
                 fileOutputStream.flush();
             }
-            fileOutputStream.close();
-            fileInputStream.close();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            if (fileOutputStream != null){
+                try {
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {
+                if (fileInputStream != null){
+                    fileInputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

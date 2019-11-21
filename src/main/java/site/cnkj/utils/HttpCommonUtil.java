@@ -33,13 +33,12 @@ public class HttpCommonUtil {
             ip = request.getRemoteAddr();
             if(ip.equals("127.0.0.1")){
                 //根据网卡取本机配置的IP
-                InetAddress inet=null;
                 try {
-                    inet = InetAddress.getLocalHost();
+                    InetAddress net = InetAddress.getLocalHost();
+                    ip= net.getHostAddress();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ip= inet.getHostAddress();
             }
         }
         // 多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
@@ -53,14 +52,14 @@ public class HttpCommonUtil {
 
     //获取本地ip
     public static String getLocalIp(){
-        InetAddress address = null;
         try {
-            address = InetAddress.getLocalHost();
+            InetAddress address = InetAddress.getLocalHost();
+            String ip=address.getHostAddress();
+            return ip;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String ip=address.getHostAddress().toString();
-        return ip;
+        return null;
     }
 
     //获取本地机器名
@@ -69,14 +68,14 @@ public class HttpCommonUtil {
     }
 
     private static String getHostName(){
-        InetAddress address = null;
         try {
-            address = InetAddress.getLocalHost();
+            InetAddress address = InetAddress.getLocalHost();
+            String hostName=address.getHostName();
+            return hostName;
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        String hostName=address.getHostName().toString();
-        return hostName;
+        return null;
     }
 
     /**
