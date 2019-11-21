@@ -17,7 +17,7 @@
 ```shell
 mvn install:install-file -Dfile=<path-to-file> -DgroupId=site.cnkj -DartifactId=CommonUtil -Dversion=1.0 -Dpackaging=jar
 ```
-> Be care for:<path-to-file> is your local jar of full path.
+> Note:<path-to-file> is your local jar of full path.
 
 > For example:
 ```shell
