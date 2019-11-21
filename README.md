@@ -3,10 +3,32 @@
 # CommonUtil
 * <b>Desc: A common utils jar for using redis elasticsearch Rest even and file.</b>
 
+## Download
+[CommonUtil-1.0.jar]()
+[CommonUtil-1.0-javadoc.jar]()
+[CommonUtil-1.0-sources.jar]()
+
 ## How to use
 ### Import it in your pom
-```java
 
+#### Import jar into your maven
+```shell
+mvn install:install-file -Dfile=<path-to-file> -DgroupId=site.cnkj -DartifactId=CommonUtil -Dversion=1.0 -Dpackaging=jar
+```
+> Be care for:<path-to-file> is your local jar of full path.
+
+> For example:
+```shell
+mvn install:install-file -Dfile=/User/carol/Desktop/CommonUtil-1.0.jar -DgroupId=site.cnkj -DartifactId=CommonUtil -Dversion=1.0 -Dpackaging=jar
+```
+
+#### Import dependency into your pom.xml
+```yaml
+<dependency>
+    <groupId>site.cnkj</groupId>
+    <artifactId>CommonUtil</artifactId>
+    <version>1.0</version>
+</dependency>
 ```
 
 ## Use in project
@@ -50,7 +72,7 @@ public class TestClass {
 ### Redis
 #### Redis single
 > Add these config info in your application.properties
-```java
+```yaml
 //set prefix name for all key
 spring.redis.prefixName=
 //set database which you want to use
@@ -67,7 +89,7 @@ spring.redis.subDescription.channel= ${spring.application.name}:flush
 
 #### Redis sentinel
 > Add these config info in your application.properties
-```java
+```yaml
 //set prefix name for all key
 spring.redis.prefixName=
 //set database which you want to use
@@ -80,7 +102,7 @@ spring.redis.sentinel.master = sentinel-127.0.0.1-6379
 
 #### Redis cluster
 > Add these config info in your application.properties
-```java
+```yaml
 //set prefix name for all key
 spring.redis.prefixName=
 //set database which you want to use
@@ -110,13 +132,13 @@ public class SubDescription implements Receiver {
 ```
 
 2.Add this configuration in your application.properties after redis config
-```java
+```yaml
 spring.redis.subDescription.channel= 
 ```
 
 ### ElasticSearch
 1.Add configuration in application.properties
-```java
+```yaml
 common.elasticsearch.cluster.name = site_cnkj_test
 common.elasticsearch.clusterNodes=127.0.0.1:8000,127.0.0.1:8001
 common.elasticsearch.username = elastic
@@ -173,7 +195,7 @@ public class ElasticSearchService{
 
 ### Thread Pool
 1.Add config in your application.properties
-```java
+```yaml
 spring.async.pool.corePoolSize = 10
 spring.async.pool.maxPoolSize = 100
 spring.async.pool.keepAliveSeconds = 60
