@@ -395,17 +395,63 @@ public class DateUtil {
 
     /**
      * 当前时间与周期时间的时间差
+     * 最大支持3600秒
      * 时间单位 秒
      *
      * @param executorTime 执行周期
-     * @return 周期执行的等待时间
+     * @return 等待秒
      */
-    public static int executorsDelayTime(int executorTime) {
-        //获取当前时间与周期时间的差
-        long nowTime = System.currentTimeMillis();
-        int timeDiscrepancy = Integer.parseInt(String.valueOf(nowTime % (executorTime * 1000) / 1000));
-        int delayTime = executorTime - timeDiscrepancy;
-        return delayTime;
+    public static long waitingTimeBySeconds(int executorTime){
+        if (executorTime <= 3600 && executorTime >=0){
+            //获取当前时间与周期时间的差
+            long nowTime = System.currentTimeMillis();
+            int timeDiscrepancy = Integer.parseInt(String.valueOf(nowTime%(executorTime*1000)/1000));
+            int delayTime = executorTime-timeDiscrepancy;
+            return delayTime;
+        }else {
+            return 0;
+        }
+    }
+
+
+    /**
+     * 等待开始周期执行的时间
+     * 最大限制24h
+     * 单位 小时
+     *
+     * @param executorTime 周期
+     * @return 等待秒
+     */
+    public static long waitingTimeByHours(int executorTime){
+        long delayTime = 0;
+        if (executorTime <= 24 && executorTime>0){
+            int num = 24 / executorTime;
+            long tomorrowEarlyMorning = getTodayEarlyMorning(translateTimeToDate(getCurrentTime(), DATEFORMATE.FULLTIMEBY_yMdHmsS), DATEFORMATE.FULLTIMEBY_yMdHmsS);
+            long todayEarlyMorning = tomorrowEarlyMorning - 24*60*60*1000;
+            long todayHour = num * executorTime * 3600000 + todayEarlyMorning;
+            if (todayHour < getCurrentTime() && getCurrentTime() < tomorrowEarlyMorning){
+                delayTime = (tomorrowEarlyMorning - getCurrentTime()) / 1000 / 60;
+            }else {
+                for (int i = 0; i <= num; i++) {
+                    long current = i * executorTime * 3600000 + todayEarlyMorning;
+                    if (getCurrentTime() == current){
+                        delayTime = 0;
+                        break;
+                    }else if (current > getCurrentTime()){
+                        delayTime = (current - getCurrentTime()) / 1000 / 60;
+                        break;
+                    }
+                }
+            }
+        }else {
+            delayTime = 0;
+        }
+        if (delayTime <= 0){
+            return 0;
+        }else {
+            delayTime = delayTime * 60 + waitingTimeBySeconds(60);
+            return delayTime;
+        }
     }
 
 
