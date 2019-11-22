@@ -4,11 +4,11 @@
 * <b>Desc: A common utils jar for using redis elasticsearch Rest even and file.</b>
 
 ## Download
-[CommonUtil-1.0.jar](https://github.com/carolcoral/CommonUtil/releases/download/1.0/CommonUtil-1.0.jar)
+[CommonUtil-1.0.jar](https://github.com/carolcoral/CommonUtil/releases/download/1.0.1/CommonUtil-1.0.1.jar)
 
-[CommonUtil-1.0-javadoc.jar](https://github.com/carolcoral/CommonUtil/releases/download/1.0/CommonUtil-1.0-javadoc.jar)
+[CommonUtil-1.0-javadoc.jar](https://github.com/carolcoral/CommonUtil/releases/download/1.0.1/CommonUtil-1.0.1-javadoc.jar)
 
-[CommonUtil-1.0-sources.jar](https://github.com/carolcoral/CommonUtil/releases/download/1.0/CommonUtil-1.0-sources.jar)
+[CommonUtil-1.0-sources.jar](https://github.com/carolcoral/CommonUtil/releases/download/1.0.1/CommonUtil-1.0.1-sources.jar)
 
 ## How to use
 ### Import it in your pom
