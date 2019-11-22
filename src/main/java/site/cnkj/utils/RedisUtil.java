@@ -1,6 +1,8 @@
 package site.cnkj.utils;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
@@ -12,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0 created by LXW on 2019/6/26 11:18
  */
 public class RedisUtil {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RedisUtil.class);
 
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -30,7 +33,7 @@ public class RedisUtil {
      * 获取链接的redis的信息，等于Command <info>
      * @return
      */
-    public Properties getInfo(){
+    public Properties info(){
         try {
             return redisTemplate.getConnectionFactory().getConnection().info();
         }catch (Exception e){
@@ -45,7 +48,7 @@ public class RedisUtil {
      * @param section 指定的属性
      * @return
      */
-    public Properties getInfo(String section){
+    public Properties info(String section){
         try {
             return redisTemplate.getConnectionFactory().getConnection().info(section);
         }catch (Exception e){
@@ -62,17 +65,17 @@ public class RedisUtil {
      */
     public boolean expire(String key,long time){
         try {
-            if(time>0){
+            if(time >= 0){
                 if (StringUtils.isNotEmpty(redisName)){
                     key = redisName + ":" + key;
                 }
                 redisTemplate.expire(key, time, TimeUnit.SECONDS);
+                return true;
             }
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 
     /**
@@ -80,11 +83,16 @@ public class RedisUtil {
      * @param key 键 不能为null
      * @return 时间(秒) 返回0代表为永久有效
      */
-    public long getExpire(String key){
-        if (StringUtils.isNotEmpty(redisName)){
-            key = redisName + ":" + key;
+    public Long getExpire(String key){
+        try {
+            if (StringUtils.isNotEmpty(redisName)){
+                key = redisName + ":" + key;
+            }
+            return redisTemplate.getExpire(key,TimeUnit.SECONDS);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return redisTemplate.getExpire(key,TimeUnit.SECONDS);
+        return null;
     }
 
     /**
@@ -92,7 +100,7 @@ public class RedisUtil {
      * @param key 键
      * @return true 存在 false不存在
      */
-    public boolean hasKey(String key){
+    public Boolean hasKey(String key){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -100,28 +108,24 @@ public class RedisUtil {
             return redisTemplate.hasKey(key);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+        return null;
     }
 
     /**
      * 删除缓存
      * @param key 可以传一个值 或多个
      */
-    @SuppressWarnings("unchecked")
-    public void del(String ... key){
+    public Boolean delete(String key){
         try {
-            for (String s : key) {
-                if (StringUtils.isNotEmpty(redisName)){
-                    s = redisName + ":" + s;
-                }
-                if(s != null && s.length() > 0){
-                    redisTemplate.delete(s);
-                }
+            if (StringUtils.isNotEmpty(redisName)){
+                key = redisName + ":" + key;
             }
+            return redisTemplate.delete(key);
         }catch (Exception e){
             e.printStackTrace();
         }
+        return null;
     }
 
     /**
@@ -156,8 +160,8 @@ public class RedisUtil {
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 
     /**
@@ -169,15 +173,13 @@ public class RedisUtil {
      */
     public boolean set(String key,Object value,long time){
         try {
-            if(time>0){
+            if(time >= 0){
                 if (StringUtils.isNotEmpty(redisName)){
                     key = redisName + ":" + key;
                 }
                 redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
-            }else{
-                set(key, value);
+                return true;
             }
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -187,57 +189,37 @@ public class RedisUtil {
     /**
      * 递增
      * @param key 键
-     * @param delta 要增加几(大于0)
+     * @param delta 要增加几(大于等于0)
      * @return
      */
-    public long incr(String key, long delta){
+    public Long increment(String key, long delta){
         try {
-            if(delta<0){
-                throw new RuntimeException("递增因子必须大于0");
+            if(delta >= 0){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                return redisTemplate.opsForValue().increment(key, delta);
             }
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
-            }
-            return redisTemplate.opsForValue().increment(key, delta);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     /**
      * 递减
      * @param key 键
-     * @param delta 要减少几(小于0)
+     * @param delta 要减少几(小于等于0)
      * @return
      */
-    public long decr(String key, long delta){
+    public Long decrement(String key, long delta){
         try {
-            if(delta<0){
-                throw new RuntimeException("递减因子必须大于0");
+            if(delta >= 0){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                return redisTemplate.opsForValue().increment(key, -delta);
             }
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
-            }
-            return redisTemplate.opsForValue().increment(key, -delta);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    /**
-     * HashGet
-     * @param key 键 不能为null
-     * @param item 项 不能为null
-     * @return 值
-     */
-    public Object hget(String key,String item){
-        try {
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
-            }
-            return redisTemplate.opsForHash().get(key, item);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -249,7 +231,7 @@ public class RedisUtil {
      * @param key 键
      * @return 对应的多个键值
      */
-    public Map<Object,Object> hmget(String key){
+    public Map<Object,Object> hashMapGet(String key){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -267,7 +249,7 @@ public class RedisUtil {
      * @param map 对应多个键值
      * @return true 成功 false 失败
      */
-    public boolean hmset(String key, Map<String, String> map){
+    public boolean hashMapSet(String key, Map<String, String> map){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -287,20 +269,37 @@ public class RedisUtil {
      * @param time 时间(秒)
      * @return true成功 false失败
      */
-    public boolean hmset(String key, Map<String,Object> map, long time){
+    public boolean hashMapSet(String key, Map<String,Object> map, long time){
+        try {
+            if (time >= 0){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                redisTemplate.opsForHash().putAll(key, map);
+                return expire(key, time);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * HashGet
+     * @param key 键 不能为null
+     * @param item 项 不能为null
+     * @return 值
+     */
+    public Object hashGet(String key,String item){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
             }
-            redisTemplate.opsForHash().putAll(key, map);
-            if(time>0){
-                expire(key, time);
-            }
-            return true;
-        } catch (Exception e) {
+            return redisTemplate.opsForHash().get(key, item);
+        }catch (Exception e){
             e.printStackTrace();
-            return false;
         }
+        return null;
     }
 
     /**
@@ -310,7 +309,7 @@ public class RedisUtil {
      * @param value 值
      * @return true 成功 false失败
      */
-    public boolean hset(String key,String item,Object value) {
+    public boolean hashSet(String key,String item,Object value) {
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -331,20 +330,19 @@ public class RedisUtil {
      * @param time 时间(秒)  注意:如果已存在的hash表有时间,这里将会替换原有的时间
      * @return true 成功 false失败
      */
-    public boolean hset(String key, String item, Object value, long time) {
+    public boolean hashSet(String key, String item, Object value, long time) {
         try {
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
+            if (time >= 0){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                hashSet(key, item, value);
+                return expire(key, time);
             }
-            hset(key, item, value);
-            if (time > 0){
-                expire(key, time);
-            }
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 
     /**
@@ -352,15 +350,16 @@ public class RedisUtil {
      * @param key 键 不能为null
      * @param item 项 可以使多个 不能为null
      */
-    public void hdel(String key, Object... item){
+    public Long hashDelete(String key, Object... item){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
             }
-            redisTemplate.opsForHash().delete(key,item);
+            return redisTemplate.opsForHash().delete(key,item);
         }catch (Exception e){
             e.printStackTrace();
         }
+        return null;
     }
 
     /**
@@ -369,7 +368,7 @@ public class RedisUtil {
      * @param item 项 不能为null
      * @return true 存在 false不存在
      */
-    public boolean hHasKey(String key, String item){
+    public Boolean hashHasKey(String key, String item){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -378,7 +377,7 @@ public class RedisUtil {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     /**
@@ -388,19 +387,18 @@ public class RedisUtil {
      * @param by 要增加几(大于0)
      * @return
      */
-    public double hincr(String key, String item,double by){
+    public Double hashIncrement(String key, String item,double by){
         try {
-            if (by <= 0 ){
-                throw new RuntimeException("by 增加数值必须大于0");
+            if (by >= 0 ){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                return redisTemplate.opsForHash().increment(key, item, by);
             }
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
-            }
-            return redisTemplate.opsForHash().increment(key, item, by);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     /**
@@ -410,19 +408,18 @@ public class RedisUtil {
      * @param by 要减少记(小于0)
      * @return
      */
-    public double hdecr(String key, String item,double by){
+    public Double hashDecrement(String key, String item, double by){
         try {
-            if (by <= 0 ){
-                throw new RuntimeException("by 减少数值必须大于0");
+            if (by >= 0 ){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                return redisTemplate.opsForHash().increment(key, item, -by);
             }
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
-            }
-            return redisTemplate.opsForHash().increment(key, item, -by);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     /**
@@ -430,7 +427,7 @@ public class RedisUtil {
      * @param key 键
      * @return
      */
-    public Set<Object> sGet(String key){
+    public Set<Object> hashGet(String key){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -438,8 +435,25 @@ public class RedisUtil {
             return redisTemplate.opsForSet().members(key);
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
+    }
+
+    /**
+     * 获取当前redis上的指定hashKey的全部字段
+     * @param key
+     * @return
+     */
+    public Set hashKeys(String key){
+        try {
+            if (StringUtils.isNotEmpty(redisName)){
+                key = redisName + ":" + key;
+            }
+            return redisTemplate.opsForHash().keys(key);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -448,7 +462,7 @@ public class RedisUtil {
      * @param value 值
      * @return true 存在 false不存在
      */
-    public boolean sHasKey(String key,Object value){
+    public boolean setHasKey(String key,Object value){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -456,8 +470,8 @@ public class RedisUtil {
             return redisTemplate.opsForSet().isMember(key, value);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 
     /**
@@ -466,7 +480,7 @@ public class RedisUtil {
      * @param values 值 可以是多个
      * @return 成功个数
      */
-    public long sSet(String key, Object...values) {
+    public Long setSet(String key, Object...values) {
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -474,8 +488,8 @@ public class RedisUtil {
             return redisTemplate.opsForSet().add(key, values);
         } catch (Exception e) {
             e.printStackTrace();
-            return 0;
         }
+        return null;
     }
 
     /**
@@ -485,21 +499,20 @@ public class RedisUtil {
      * @param values 值 可以是多个
      * @return 成功个数
      */
-    public long sSetAndTime(String key,long time,Object...values) {
+    public Long setSet(String key, long time, Object...values) {
         try {
-            if (time <= 0){
-                throw new RuntimeException("过期时间必须大于0");
+            if (time >= 0){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                Long count = redisTemplate.opsForSet().add(key, values);
+                expire(key, time);
+                return count;
             }
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
-            }
-            Long count = redisTemplate.opsForSet().add(key, values);
-            expire(key, time);
-            return count;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     /**
@@ -507,7 +520,7 @@ public class RedisUtil {
      * @param key 键
      * @return
      */
-    public long sGetSetSize(String key){
+    public Long setGetSize(String key){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -516,7 +529,7 @@ public class RedisUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     /**
@@ -525,7 +538,7 @@ public class RedisUtil {
      * @param values 值 可以是多个
      * @return 移除的个数
      */
-    public long sRemove(String key, Object ...values) {
+    public Long setRemove(String key, Object ...values) {
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -534,7 +547,7 @@ public class RedisUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     /**
@@ -544,7 +557,7 @@ public class RedisUtil {
      * @param end 结束  0 到 -1代表所有值
      * @return
      */
-    public List<Object> lGet(String key,long start, long end){
+    public List<Object> listGetRange(String key,long start, long end){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -561,7 +574,7 @@ public class RedisUtil {
      * @param key 键
      * @return
      */
-    public long lGetListSize(String key){
+    public long listGetSize(String key){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -579,7 +592,7 @@ public class RedisUtil {
      * @param index 索引  index>=0时， 0 表头，1 第二个元素，依次类推；index<0时，-1，表尾，-2倒数第二个元素，依次类推
      * @return
      */
-    public Object lGetIndex(String key, long index){
+    public Object listGetByIndex(String key, long index){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -592,22 +605,21 @@ public class RedisUtil {
     }
 
     /**
-     * 将list放入缓存
+     * 从右开始放入元素到list中
      * @param key 键
      * @param value 值
      * @return
      */
-    public boolean lRightPush(String key, Object value) {
+    public Long listRightPush(String key, Object value) {
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
             }
-            redisTemplate.opsForList().rightPush(key, value);
-            return true;
+            return redisTemplate.opsForList().rightPush(key, value);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     /**
@@ -617,21 +629,20 @@ public class RedisUtil {
      * @param time 时间(秒)
      * @return
      */
-    public boolean lRightPush(String key, Object value, long time) {
+    public Long listRightPush(String key, Object value, long time) {
         try {
-            if (time <= 0){
-                throw new RuntimeException("过期时间必须大于0");
+            if (time >= 0){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                Long rightPush = redisTemplate.opsForList().rightPush(key, value);
+                expire(key, time);
+                return rightPush;
             }
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
-            }
-            redisTemplate.opsForList().rightPush(key, value);
-            expire(key, time);
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     /**
@@ -640,17 +651,16 @@ public class RedisUtil {
      * @param value 值
      * @return
      */
-    public boolean lRightPushAll(String key, List<Object> value) {
+    public Long listRightPushAll(String key, List<Object> value) {
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
             }
-            redisTemplate.opsForList().rightPushAll(key, value);
-            return true;
+            return redisTemplate.opsForList().rightPushAll(key, value);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     /**
@@ -660,21 +670,20 @@ public class RedisUtil {
      * @param time 时间(秒)
      * @return
      */
-    public boolean lRightPushAll(String key, List<Object> value, long time) {
+    public Long listRightPushAll(String key, List<Object> value, long time) {
         try {
-            if (time <= 0){
-                throw new RuntimeException("过期时间必须大于0");
+            if (time >= 0){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                Long rightPushAll = redisTemplate.opsForList().rightPushAll(key, value);
+                expire(key, time);
+                return rightPushAll;
             }
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
-            }
-            redisTemplate.opsForList().rightPushAll(key, value);
-            expire(key, time);
-            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     /**
@@ -684,7 +693,7 @@ public class RedisUtil {
      * @param value 值
      * @return
      */
-    public boolean lUpdateIndex(String key, long index, Object value) {
+    public boolean listSetByIndex(String key, long index, Object value) {
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -704,17 +713,16 @@ public class RedisUtil {
      * @param value 指定的值
      * @return
      */
-    public long lRemove(String key, long count, Object value) {
+    public Long listRemove(String key, long count, Object value) {
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
             }
-            Long remove = redisTemplate.opsForList().remove(key, count, value);
-            return remove;
+            return redisTemplate.opsForList().remove(key, count, value);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     /**
@@ -723,7 +731,7 @@ public class RedisUtil {
      * @param key
      * @return
      */
-    public Set<String> getKeys(String key){
+    public Set<String> keys(String key){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -739,31 +747,14 @@ public class RedisUtil {
      * 获取当前redis上的全部key
      * @return
      */
-    public Set<String> getKeys(){
+    public Set<String> keys(){
         try {
+            String key = "";
             if (StringUtils.isNotEmpty(redisName)){
-                return redisTemplate.keys(redisName.concat("*"));
-            }else {
-                return redisTemplate.keys("*");
+                key = redisName;
             }
+            return redisTemplate.keys(key.concat("*"));
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * 获取当前redis上的指定hashKey的全部字段
-     * @param key
-     * @return
-     */
-    public Set hgetAll(String key){
-        try {
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName + ":" + key;
-            }
-            return redisTemplate.opsForHash().keys(key);
-        }catch (Exception e){
             e.printStackTrace();
         }
         return null;
@@ -791,7 +782,7 @@ public class RedisUtil {
      * @param value 集合
      * @return
      */
-    public long lLeftPushAll(String key, Collection value){
+    public Long listLeftPushAll(String key, Collection value){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -800,7 +791,7 @@ public class RedisUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     /**
@@ -809,7 +800,7 @@ public class RedisUtil {
      * @param value 元素
      * @return
      */
-    public long leftPush(String key, String value){
+    public Long listLeftPush(String key, String value){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -818,25 +809,7 @@ public class RedisUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
-    }
-
-    /**
-     * 从右开始加入一个新元素
-     * @param key
-     * @param value 元素
-     * @return
-     */
-    public long rightPush(String key, Object value) {
-        try {
-            if (StringUtils.isNotEmpty(redisName)){
-                key = redisName+":"+key;
-            }
-            return redisTemplate.opsForList().rightPush(key, value);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return 0;
+        return null;
     }
 
     /**
@@ -846,7 +819,7 @@ public class RedisUtil {
      * @param timeUnit
      * @return
      */
-    public Object leftPop(String key, long time, TimeUnit timeUnit){
+    public Object listLeftPop(String key, long time, TimeUnit timeUnit){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -865,7 +838,7 @@ public class RedisUtil {
      * @param key
      * @return
      */
-    public Object leftPop(String key){
+    public Object listLeftPop(String key){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -884,7 +857,7 @@ public class RedisUtil {
      * @param key
      * @return
      */
-    public Object rightPop(String key){
+    public Object listRightPop(String key){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -905,7 +878,7 @@ public class RedisUtil {
      * @param destinationKey 加入元素的队列
      * @return
      */
-    public Object rightPopAndLeftPush(String sourceKey, String destinationKey){
+    public Object listRightPopAndLeftPush(String sourceKey, String destinationKey){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 sourceKey = redisName + ":" + sourceKey;
@@ -928,7 +901,7 @@ public class RedisUtil {
      * @param unit 时间格式
      * @return
      */
-    public Object rightPopAndLeftPush(String sourceKey, String destinationKey, long timeout, TimeUnit unit){
+    public Object listRightPopAndLeftPush(String sourceKey, String destinationKey, long timeout, TimeUnit unit){
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 sourceKey = redisName + ":" + sourceKey;
@@ -941,6 +914,13 @@ public class RedisUtil {
         return null;
     }
 
+    /**
+     * 扫描当前db上的key，效果等于keys的分页
+     * 通常生产环境不允许使用keys等命令，可以使用scan获取keys
+     * @param count 数量
+     * @param pattern 匹配规则
+     * @return keys
+     */
     public Set<String> scan(Long count, String pattern){
         Set set = new HashSet();
         try {
@@ -958,7 +938,11 @@ public class RedisUtil {
         return null;
     }
 
-    public Set<String> scanAll(){
+    /**
+     * 获取当前db上的全部keys
+     * @return keys
+     */
+    public Set<String> scan(){
         Set set = new HashSet();
         try {
             ScanOptions scanOptions = ScanOptions.NONE;
@@ -974,8 +958,15 @@ public class RedisUtil {
     }
 
 
-    public List<Map.Entry<Object, Object>> hscan(String key, long count, String pattern){
-        List<Map.Entry<Object, Object>> list = new ArrayList();
+    /**
+     * 获取hash字段里面的keys
+     * @param key hash key
+     * @param count 数量
+     * @param pattern 匹配规则
+     * @return keys
+     */
+    public List<Map.Entry<Object, Object>> hashScan(String key, long count, String pattern){
+        List<Map.Entry<Object, Object>> list = new ArrayList<Map.Entry<Object, Object>>();
         try {
             if (count > 0){
                 if (StringUtils.isNotEmpty(redisName)){
@@ -994,8 +985,13 @@ public class RedisUtil {
         return null;
     }
 
-    public List<Map.Entry<Object, Object>> hscanAll(String key){
-        List<Map.Entry<Object, Object>> list = new ArrayList();
+    /**
+     * 获取hash字段里面的全部keys
+     * @param key hash key
+     * @return keys
+     */
+    public List<Map.Entry<Object, Object>> hashScan(String key){
+        List<Map.Entry<Object, Object>> list = new ArrayList<Map.Entry<Object, Object>>();
         try {
             if (StringUtils.isNotEmpty(redisName)){
                 key = redisName + ":" + key;
@@ -1012,11 +1008,77 @@ public class RedisUtil {
         return null;
     }
 
-    public long hlen(String key){
-        if (StringUtils.isNotEmpty(redisName)){
-            key = redisName + ":" + key;
+    /**
+     * 获取hash里面的全部key的数量
+     * @param key hash key
+     * @return 数量
+     */
+    public Long hashSize(String key){
+        try {
+            if (StringUtils.isNotEmpty(redisName)){
+                key = redisName + ":" + key;
+            }
+            return redisTemplate.getConnectionFactory().getConnection().hLen(key.getBytes());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return redisTemplate.getConnectionFactory().getConnection().hLen(key.getBytes());
+        return null;
+    }
+
+    /**
+     * redis 分布式锁 加锁
+     * @param key 锁唯一标志
+     * @param timeout 超时时间
+     * @return 加锁结果
+     */
+    public boolean lock(String key, long timeout){
+        try {
+            String value = String.valueOf(timeout + System.currentTimeMillis());
+            if (StringUtils.isNotEmpty(redisName)){
+                key = redisName + ":" + key;
+            }
+            if(redisTemplate.opsForValue().setIfAbsent(key,value)){
+                return true;
+            }
+            //判断锁超时,防止死锁
+            String currentValue = (String)redisTemplate.opsForValue().get(key);
+            //如果锁过期
+            if(!StringUtils.isEmpty(currentValue) && Long.parseLong(currentValue) < System.currentTimeMillis()){
+                //获取上一个锁的时间value
+                String oldValue = (String) redisTemplate.opsForValue().getAndSet(key,value);
+                if(!StringUtils.isEmpty(oldValue) && oldValue.equals(currentValue) ){
+                    //校验是不是上个对应的,也是防止并发
+                    return true;
+                }
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            LOGGER.error("[Redis分布式锁] 加锁异常，{}",e);
+        }
+        return false;
+    }
+    /**
+     * redis 分布式锁 解锁
+     * @param key 锁标识
+     * @param value 锁值
+     * @return 解锁结果
+     */
+    public boolean unLock(String key,String value){
+        try {
+            if (StringUtils.isNotEmpty(redisName)){
+                key = redisName + ":" + key;
+            }
+            String currentValue =  (String) redisTemplate.opsForValue().get(key);
+            if(!StringUtils.isEmpty(currentValue) && currentValue.equals(value) ){
+                //删除key
+                redisTemplate.opsForValue().getOperations().delete(key);
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("[Redis分布式锁] 解锁异常，{}",e);
+        }
+        return false;
     }
 
 }
