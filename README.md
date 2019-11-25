@@ -1,7 +1,7 @@
 [TOC]
 
 # CommonUtil
-* <b>Desc: A common utils jar for using redis elasticsearch Rest even and file.</b>
+* <b>Desc: A common utils jar for using redis elasticsearch Rest and file even more these.</b>
 
 ## Download
 [CommonUtil.jar](https://github.com/carolcoral/CommonUtil/releases/download/1.0.1/CommonUtil-1.0.1.jar)
