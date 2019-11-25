@@ -33,49 +33,44 @@ mvn install:install-file -Dfile=/User/carol/Desktop/CommonUtil-1.0.jar -DgroupId
 ```
 
 ## Use in project
-1.First import it in your application
+
+### Redis
+#### 1.First import it in your application.
 ```java
 @SpringBootApplication
 @ComponentScan(basePackages = "site.cnkj.*",
         basePackageClasses = {
-                RestTemplateConfig.class,
                 RedisConfig.class
         })
 public class Application {
+    
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-    @Resource(name = "restTemplateUtil")
-    public RestTemplateUtil restTemplateUtil;
+    
     @Resource(name = "redisUtil")
     public RedisUtil redisUtil;
 }
 ```
 
-2.Then autowired in your class
+#### 2.Then autowired in your class, for example to use like this.
 ```java
 @Component
 public class TestClass {
     @Autowired
     RedisUtil redisUtil;
     
-    @Autowired
-    private RestTemplateUtil restTemplateUtil;
-    
     public void test(){
         redisUtils.scanAll();
-        restTemplateUtil.getWithQ("http://127.0.0.1", Object.class, new HashMap<>().put("test", "1"));
     }
 }
 ```
 
-
-### Redis
 #### Redis single
 > Add these config info in your application.properties
 ```yaml
 //set prefix name for all key
-spring.redis.prefixName=
+spring.redis.name=
 //set database which you want to use
 spring.redis.database=0
 //set redis connection host
@@ -113,7 +108,7 @@ spring.redis.timeout=10s
 spring.redis.cluster.nodes = 127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381,127.0.0.1:6382,127.0.0.1:6383
 ```
 
-#### Redis subdescription/publish
+#### Redis SubDescription/Publish(订阅/发布)
 1.Implements Receiver
 ```java
 @Component
@@ -134,11 +129,26 @@ public class SubDescription implements Receiver {
 
 2.Add this configuration in your application.properties after redis config
 ```yaml
-spring.redis.subDescription.channel= 
+spring.redis.subDescription.channel= //SubDescription or Publish of name
 ```
 
 ### ElasticSearch
-1.Add configuration in application.properties
+#### Import it in your application.
+```java
+@SpringBootApplication
+@ComponentScan(basePackages = "site.cnkj.*",
+        basePackageClasses = {
+                ElasticsearchConfig.class
+        })
+public class Application {
+    
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
+#### 1.Add configuration in application.properties
 ```yaml
 common.elasticsearch.cluster.name = site_cnkj_test
 common.elasticsearch.clusterNodes=127.0.0.1:8000,127.0.0.1:8001
@@ -151,7 +161,7 @@ common.elasticsearch.maxRetryTimeoutMillis = 180000
 common.elasticsearch.connectTimeout = 180000
 ```
 
-2.Autowried client in your class
+#### 2.Autowired client in your class
 ```java
 @Service
 public class ElasticSearchService{
@@ -195,7 +205,7 @@ public class ElasticSearchService{
 ```
 
 ### Thread Pool
-1.Add config in your application.properties
+#### 1.Add config in your application.properties
 ```yaml
 spring.async.pool.corePoolSize = 10
 spring.async.pool.maxPoolSize = 100
@@ -203,7 +213,7 @@ spring.async.pool.keepAliveSeconds = 60
 spring.async.pool.queueCapacity = 25
 ```
 
-2.Import it in your application
+#### 2.Import it in your application
 ```java
 @SpringBootApplication
 @ComponentScan(basePackages = "site.cnkj.*",
@@ -223,7 +233,7 @@ public class TestApplication {
 }
 ```
 
-3.Use in your class
+#### 3.Use in your class
 ```java
 @Service
 public class AsyncExecutePool {
@@ -231,6 +241,89 @@ public class AsyncExecutePool {
     @Async(value = "myTaskAsyncPool")
     public void execute() {
         //TODO
+    }
+}
+```
+
+### HttpCommonUtil
+#### 1.Import it in your application
+```java
+@SpringBootApplication
+@ComponentScan(basePackages = "site.cnkj.*",
+        basePackageClasses = {
+                RestTemplateConfig.class
+        })
+public class TestApplication {
+
+    public static void main(String[] args) {
+        try {
+            SpringApplication.run(TestApplication.class, args);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+#### 2.Use in your class
+```java
+@Service
+public class RestTemplateService {
+
+    @Autowired
+    RestTemplateUtil restTemplateUtil;
+        
+    public void test(){
+       restTemplateUtil.getWithQ("http://127.0.0.1", Object.class, new HashMap<>().put("test", "1"));
+    }
+}
+```
+
+### MongodbUtil
+#### 1.Add config in your application.properties
+```yaml
+spring.data.mongodb.authentication-database= # Authentication database name.
+spring.data.mongodb.database= # Database name.
+spring.data.mongodb.field-naming-strategy= # Fully qualified name of the FieldNamingStrategy to use.
+spring.data.mongodb.grid-fs-database= # GridFS database name.
+spring.data.mongodb.host= # Mongo server host. Cannot be set with URI.
+spring.data.mongodb.password= # Login password of the mongo server. Cannot be set with URI.
+spring.data.mongodb.port= # Mongo server port. Cannot be set with URI.
+spring.data.mongodb.repositories.type=auto # Type of Mongo repositories to enable.
+spring.data.mongodb.uri=mongodb://localhost/test # Mongo database URI. Cannot be set with host, port and credentials.
+spring.data.mongodb.username= # Login user of the mongo server. Cannot be set with URI.
+
+```
+
+#### 1.Import it in your application
+```java
+@SpringBootApplication
+@ComponentScan(basePackages = "site.cnkj.*",
+        basePackageClasses = {
+                MongodbConfig.class
+        })
+public class TestApplication {
+
+    public static void main(String[] args) {
+        try {
+            SpringApplication.run(TestApplication.class, args);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+#### 2.Use in your class
+```java
+@Service
+public class MongodbService {
+
+    @Autowired
+    MongodbUtil mongodbUtil;
+        
+    public void test(){
+       mongodbUtil.dropCollection("collectionName");
     }
 }
 ```

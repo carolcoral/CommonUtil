@@ -1,7 +1,5 @@
 package site.cnkj.utils.config;
 
-import site.cnkj.utils.RedisUtil;
-import site.cnkj.utils.domain.redis.Receiver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -14,17 +12,20 @@ import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import site.cnkj.utils.RedisUtil;
+import site.cnkj.utils.domain.redis.Receiver;
 
 /*
  * @version 1.0 created by LXW on 2019/6/25 10:30
  */
 @Configuration
+@ConditionalOnProperty(prefix="spring.redis", name = "host")
 public class RedisConfig {
 
     /**
      * 指定使用redisUtil包中所有key的前缀，如果不需要则默认为空
      */
-    @Value("${spring.redis.prefixName:''}")
+    @Value("${spring.redis.name:''}")
     private String redisName = "";
 
     @Bean
