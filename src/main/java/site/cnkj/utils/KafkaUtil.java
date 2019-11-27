@@ -19,11 +19,15 @@ public class KafkaUtil {
      * @param partitions Collection<TopicPartition> partitions
      * @return {partition:offset}
      */
-    public static Map<TopicPartition, Long> getConsumerPartitionsOffset(Map<String, Object> properties, Collection<TopicPartition> partitions) {
+    public static Map<String, Long> getConsumerPartitionsOffset(Map<String, Object> properties, Collection<TopicPartition> partitions) {
         KafkaConsumer consumer = new KafkaConsumer(properties);
+        Map<String, Long> partitionsOffset = new HashMap<>();
         try {
             Map<TopicPartition, Long> endOffsets = consumer.endOffsets(partitions);
-            return endOffsets;
+            for (TopicPartition topicPartition : endOffsets.keySet()) {
+                partitionsOffset.put(topicPartition.toString(), endOffsets.get(topicPartition));
+            }
+            return partitionsOffset;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -45,8 +49,8 @@ public class KafkaUtil {
      *           }
      *         }
      */
-    public static Map<String, Map<TopicPartition, Long>> getConsumerTopicPartitionsOffset(Map<String, Object> properties, Set<String> topics){
-        Map<String, Map<TopicPartition, Long>> topicPartitionMap = new HashMap<>();
+    public static Map<String, Map<String, Long>> getConsumerTopicPartitionsOffset(Map<String, Object> properties, Set<String> topics){
+        Map<String, Map<String, Long>> topicPartitionMap = new HashMap<>();
         KafkaConsumer kafkaConsumer = new KafkaConsumer(properties);
         try {
             for (String topic : topics) {
@@ -56,7 +60,7 @@ public class KafkaUtil {
                     TopicPartition topicPartition = new TopicPartition(partitionInfo.topic(), partitionInfo.partition());
                     topicPartitions.add(topicPartition);
                 }
-                Map<TopicPartition, Long> topicPartitionsOffset = getConsumerPartitionsOffset(properties, topicPartitions);
+                Map<String, Long> topicPartitionsOffset = getConsumerPartitionsOffset(properties, topicPartitions);
                 topicPartitionMap.put(topic, topicPartitionsOffset);
             }
             return topicPartitionMap;
