@@ -7,7 +7,7 @@
     <groupId>site.cnkj</groupId>
     <artifactId>CommonUtil</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -150,6 +150,14 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>3.11.2</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/ch.ethz.ganymed/ganymed-ssh2 -->
+        <dependency>
+            <groupId>ch.ethz.ganymed</groupId>
+            <artifactId>ganymed-ssh2</artifactId>
+            <version>262</version>
+        </dependency>
+
 
 
     </dependencies>

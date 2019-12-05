@@ -10,6 +10,9 @@
 
 [CommonUtil-sources.jar](https://github.com/carolcoral/CommonUtil/releases/download/1.0.1/CommonUtil-1.0.1-sources.jar)
 
+## Log
+> `2019-12-05 14:33:23` New class for remotely connect to the server and execute the script.[SSH2Util]()
+
 ## How to use
 ### Import it in your pom
 #### Import jar into your maven
