@@ -11,6 +11,12 @@ import java.util.*;
  */
 public class KafkaUtil {
 
+    private static final String BOOTSTRAP_SERVERS = "bootstrap.servers";
+    private static final String GROUP_ID = "group.id";
+    private static final String KEY_DESERIALIZER = "key.deserializer";
+    private static final String VALUE_DESERIALIZER = "value.deserializer";
+    private static final String STRING_DESERIALIZER = "org.apache.kafka.common.serialization.StringDeserializer";
+
 
     /**
      * 获取当前topic下的全部分区的偏移量信息
@@ -70,6 +76,33 @@ public class KafkaUtil {
         }finally {
             kafkaConsumer.close();
         }
+    }
+
+    /**
+     * 获取指定集群上指定groupId的topic的每个分区的当前偏移量
+     *
+     * @param bootstrapServers 消费地址
+     * @param groupId id
+     * @param topics topic集合
+     * @return {
+     *          topic:
+     *           {
+     *            partitionInfo:offset
+     *           }
+     *         }
+     */
+    public static Map<String, Map<String, Long>> getConsumerOffset(List<String> bootstrapServers, String groupId, List<String> topics){
+        try {
+            Map<String, Object> properties = new HashMap<>();
+            properties.put(BOOTSTRAP_SERVERS, bootstrapServers);
+            properties.put(GROUP_ID, groupId);
+            properties.put(KEY_DESERIALIZER, STRING_DESERIALIZER);
+            properties.put(VALUE_DESERIALIZER, STRING_DESERIALIZER);
+            return getConsumerTopicPartitionsOffset(properties, new HashSet<String>(topics));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
