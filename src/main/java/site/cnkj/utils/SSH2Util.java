@@ -139,7 +139,10 @@ public class SSH2Util {
     }
 
     /**
-     * Execute script
+     * Execute script.
+     * NOTE: If result is empty or null, it will be throw.
+     * WARN: If it is not a command that comes with Linux, there may be unrecognized problems.
+     * For Example: ll: command not found, even it can be used in your servers.
      * @param connection Connection object
      * @param cmd script
      * @return Results of the script
@@ -150,7 +153,7 @@ public class SSH2Util {
             session.execCommand(cmd, DEFAULT_CHARTSET);
             String out = toString(session.getStdout());
             if (StringUtils.isEmpty(out)){
-                throw new RuntimeException("Execution failed, return value is empty."+toString(session.getStderr()));
+                throw new RuntimeException("Execution failed, return value is NULL."+toString(session.getStderr()));
             }
             session.close();
             connection.close();
@@ -243,9 +246,9 @@ public class SSH2Util {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            connection.close();
         }
         return false;
     }
-
 
 }
