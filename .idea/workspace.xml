@@ -4,7 +4,6 @@
     <list default="true" id="52b7c556-aac6-402c-b840-5f2564f1f5d7" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/site/cnkj/utils/service/ActuatorInfo.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +19,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="711">
-                <caret line="48" column="116" lean-forward="true" selection-start-line="48" selection-start-column="116" selection-end-line="48" selection-end-column="116" />
+              <first_editor relative-caret-position="471">
+                <caret line="40" column="583" selection-start-line="40" selection-start-column="583" selection-end-line="40" selection-end-column="583" />
               </first_editor>
               <second_editor />
             </state>
@@ -320,7 +319,7 @@
       <workItem from="1574835832018" duration="761000" />
       <workItem from="1575510784503" duration="16722000" />
       <workItem from="1575597300473" duration="4388000" />
-      <workItem from="1576052386425" duration="634000" />
+      <workItem from="1576052386425" duration="1194000" />
     </task>
     <task id="LOCAL-00001" summary="repair some lombok questions">
       <created>1574320188766</created>
@@ -434,15 +433,21 @@
       <option name="project" value="LOCAL" />
       <updated>1576052500071</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="readme.md">
+      <created>1576053081227</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1576053081227</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66093000" />
+    <option name="totallyTimeSpent" value="66653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -462,7 +467,7 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32715377" />
+      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32715377" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.44056708" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3293348" />
@@ -939,8 +944,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="711">
-            <caret line="48" column="116" lean-forward="true" selection-start-line="48" selection-start-column="116" selection-end-line="48" selection-end-column="116" />
+          <first_editor relative-caret-position="471">
+            <caret line="40" column="583" selection-start-line="40" selection-start-column="583" selection-end-line="40" selection-end-column="583" />
           </first_editor>
           <second_editor />
         </state>
