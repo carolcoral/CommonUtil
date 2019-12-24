@@ -1,6 +1,7 @@
 package site.cnkj.utils;
 
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.consumer.OffsetAndTimestamp;
 import org.apache.kafka.common.PartitionInfo;
 import org.apache.kafka.common.TopicPartition;
 
@@ -104,5 +105,95 @@ public class KafkaUtil {
         }
         return null;
     }
+
+    /**
+     * 获取指定topic指定时间的每个分区的偏移量
+     *
+     * @param properties 配置信息
+     * @param topic topic
+     * @param time 时间戳，秒
+     * @return Map<TopicPartition, OffsetAndTimestamp>
+     */
+    public static Map<TopicPartition, OffsetAndTimestamp> getOffsetByTime(Map<String, Object> properties, String topic, long time){
+        try {
+            KafkaConsumer kafkaConsumer = new KafkaConsumer(properties);
+            Map<TopicPartition, Long> timestampsToSearch = new HashMap<>();
+            List<PartitionInfo> partitions = kafkaConsumer.partitionsFor(topic);
+            for (PartitionInfo partition : partitions) {
+                TopicPartition topicPartition = new TopicPartition(topic, partition.partition());
+                timestampsToSearch.put(topicPartition, time*1000);
+            }
+            Map<TopicPartition, OffsetAndTimestamp> offsetsForTimes = kafkaConsumer.offsetsForTimes(timestampsToSearch);
+            return offsetsForTimes;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 获取指定topic指定时间的最大偏移量
+     *
+     * @param properties 配置信息
+     * @param topic topic
+     * @param time 时间戳，秒
+     * @return Long
+     */
+    public static Long getLatestOffsetByTime(Map<String, Object> properties, String topic, long time){
+        long offset = 0;
+        try {
+            Map<TopicPartition, OffsetAndTimestamp> offsetsForTimes = getOffsetByTime(properties, topic, time);
+            if (offsetsForTimes != null){
+                for (TopicPartition topicPartition : offsetsForTimes.keySet()) {
+                    offset = offset>offsetsForTimes.get(topicPartition).offset()?offset:offsetsForTimes.get(topicPartition).offset();
+                }
+            }
+            return offset;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 获取指定topic指定时间的最小偏移量
+     *
+     * @param properties 配置信息
+     * @param topic topic
+     * @param time 时间戳，秒
+     * @return Long
+     */
+    public static Long getEarlyOffsetByTime(Map<String, Object> properties, String topic, long time){
+        long offset = 0;
+        try {
+            Map<TopicPartition, OffsetAndTimestamp> offsetsForTimes = getOffsetByTime(properties, topic, time);
+            if (offsetsForTimes != null){
+                for (TopicPartition topicPartition : offsetsForTimes.keySet()) {
+                    if (0 == offset){
+                        offset = offsetsForTimes.get(topicPartition).offset();
+                    }
+                    offset = offset < offsetsForTimes.get(topicPartition).offset()?offset:offsetsForTimes.get(topicPartition).offset();
+                }
+            }
+            return offset;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //public static void main(String[] args) {
+    //    Map<String, Object> properties = new HashMap<>();
+    //    properties.put(BOOTSTRAP_SERVERS, "10.25.246.24:9091,10.25.246.24:9092,10.25.246.24:9093");
+    //    properties.put(GROUP_ID, "report");
+    //    properties.put(KEY_DESERIALIZER, STRING_DESERIALIZER);
+    //    properties.put(VALUE_DESERIALIZER, STRING_DESERIALIZER);
+    //    long offset = getEarlyOffsetByTime(properties, "t3_java_apiLog", 1576828800);
+    //    System.out.println("----------------------------------------------------");
+    //    System.out.println(offset);
+    //    long offset2 = getLatestOffsetByTime(properties, "t3_java_apiLog", 1576828800);
+    //    System.out.println("----------------------------------------------------");
+    //    System.out.println(offset2);
+    //}
 
 }

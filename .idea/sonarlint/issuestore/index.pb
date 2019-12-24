@@ -11,8 +11,6 @@ d
 4src/main/java/site/cnkj/utils/domain/BaseResult.java,7\8\78665d31b9eab2bd13e3d8280706ba1cc0afff76
 d
 4src/main/java/site/cnkj/utils/domain/DataResult.java,6\2\62c47681cb5554368bb4dc4d395a53782ffe6ff8
-g
-7src/main/java/site/cnkj/utils/service/ActuatorInfo.java,a\a\aabc85f93e34ac2001225aa7b9f2f3916ef4d016
 \
 ,src/main/java/site/cnkj/utils/KafkaUtil.java,4\0\40103624e623ede4ca7189dca420fcb62f109048
 ]
@@ -56,3 +54,5 @@ e
 .src/main/java/site/cnkj/utils/MongodbUtil.java,4\c\4cf301d9cffaddb7e4648cc4dd3a5641f8eeca3d
 g
 7src/main/java/site/cnkj/utils/config/MongodbConfig.java,6\1\6184bd91ee6ff5ec50f03427c726bda645d58561
+E
+wiki/ElasticSearch.md,f\f\ffc8d3adb3337581ddb2ac9b7cedb3ba9668f8bf
