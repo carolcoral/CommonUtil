@@ -224,21 +224,12 @@
         </plugins>
     </build>
 
-    <!--Add repositories-->
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>site.cnkj</id>
-            <name>CommonUtil</name>
-            <url>https://raw.githubusercontent.com/carolcoral/CommonUtil/master/</url>
+            <id>CommonUtil</id>
+            <url>https://raw.githubusercontent.com/carolcoral/CommonUtil/master/repository</url>
         </repository>
-    </repositories>
-    <!-- Add dependencies -->
-    <!--<dependencies>-->
-        <!--<dependency>-->
-            <!--<artifactId>${artifactId}</artifactId>-->
-            <!--<groupId>com.github.${github_account}</groupId>-->
-            <!--<version>${version}</version>-->
-        <!--</dependency>-->
-    <!--</dependencies>-->
+    </distributionManagement>
+
 
 </project>
