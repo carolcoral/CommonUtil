@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52b7c556-aac6-402c-b840-5f2564f1f5d7" name="Default" comment="demo for protobuf operation">
-      <change afterPath="$PROJECT_DIR$/maven/CommonUtil-1.1.0.pom" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/maven/_remote.repositories" afterDir="false" />
+    <list default="true" id="52b7c556-aac6-402c-b840-5f2564f1f5d7" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/repository/site/cnkj/CommonUtil/maven-metadata-local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maven/CommonUtil-1.1.0.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maven/CommonUtil-1.1.0.pom" beforeDir="false" afterPath="$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/CommonUtil-1.1.0.pom" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maven/_remote.repositories" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maven/_remote.repositories" beforeDir="false" afterPath="$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/_remote.repositories" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -104,14 +106,20 @@
           <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
         </entry>
       </file>
-      <file leaf-file-name="ProtobufOuterOperation.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProtobufOuterOperation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cnkj/site/data/ProtobufOuterOperation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="40">
+              <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="maven-metadata-local.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/maven-metadata-local.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -161,6 +169,7 @@
         <option value="$PROJECT_DIR$/src/main/java/site/cnkj/utils/StringUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/cnkj/site/data/ProtobufOuterOperation.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/repository/site/cnkj/CommonUtil/maven-metadata-local.xml" />
       </list>
     </option>
   </component>
@@ -227,7 +236,37 @@
             <path>
               <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
               <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="maven" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+              <item name="site" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+              <item name="site" type="462c0819:PsiDirectoryNode" />
+              <item name="cnkj" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+              <item name="site" type="462c0819:PsiDirectoryNode" />
+              <item name="cnkj" type="462c0819:PsiDirectoryNode" />
+              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+              <item name="site" type="462c0819:PsiDirectoryNode" />
+              <item name="cnkj" type="462c0819:PsiDirectoryNode" />
+              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
+              <item name="1.1.0" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
@@ -298,6 +337,16 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\CommonUtil\repository\site\cnkj\CommonUtil\1.1.0" />
+      <recent name="F:\CommonUtil\repository\site\cnkj\CommonUtil" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\CommonUtil\repository\site\cnkj\CommonUtil" />
+      <recent name="F:\CommonUtil\maven" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -421,7 +470,7 @@
       <workItem from="1577437512143" duration="1157000" />
       <workItem from="1578970199029" duration="617000" />
       <workItem from="1579241019347" duration="2236000" />
-      <workItem from="1579419449173" duration="1003000" />
+      <workItem from="1579419449173" duration="2484000" />
     </task>
     <task id="LOCAL-00001" summary="repair some lombok questions">
       <created>1574320188766</created>
@@ -563,14 +612,22 @@
       <option name="project" value="LOCAL" />
       <updated>1577438196875</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="maven">
+      <created>1579420465866</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1579420465866</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79355000" />
+    <option name="totallyTimeSpent" value="80836000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -590,7 +647,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3267974" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3642312" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3642312" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3293348" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19349681" />
@@ -693,7 +750,8 @@
     <MESSAGE value="readme.md" />
     <MESSAGE value="get offset from kafka by timestamp" />
     <MESSAGE value="demo for protobuf operation" />
-    <option name="LAST_COMMIT_MESSAGE" value="demo for protobuf operation" />
+    <MESSAGE value="maven" />
+    <option name="LAST_COMMIT_MESSAGE" value="maven" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -710,13 +768,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/2.1.5.RELEASE/spring-data-mongodb-2.1.5.RELEASE-sources.jar!/org/springframework/data/mongodb/core/mapping/event/MongoMappingEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver/3.8.2/mongodb-driver-3.8.2-sources.jar!/com/mongodb/client/MongoDatabase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="489">
@@ -1072,7 +1123,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/maven/_remote.repositories">
+    <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/_remote.repositories">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -1103,18 +1154,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/maven/CommonUtil-1.1.0.pom">
+    <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/CommonUtil-1.1.0.pom">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4447" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cnkj/site/data/ProtobufOuterOperation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="40">
+          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/maven-metadata-local.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
         </state>
       </provider>
     </entry>
