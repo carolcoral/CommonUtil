@@ -134,5 +134,4 @@ public class SoapXmlFormatUtil {
         }
         return jsonObject;
     }
-
 }
