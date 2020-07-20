@@ -11,6 +11,38 @@
 ## [WIKI](https://github.com/carolcoral/CommonUtil/wiki)
 
 ## Log
+> `2020年7月20日 14:17:00` New date function for format date by The date-format.For example like this:
+
+```java
+public static void main(String[] args) {
+    List<String> date_list = Arrays.asList(
+            "YYYY",
+            "YYYY-MM",
+            "YYYY-MM-dd",
+            "YYYY-MM-dd HH",
+            "YYYY-MM-dd HH:mm",
+            "YYYY-MM-dd HH:mm:ss"
+    );
+    int parseInt = -1;
+    for (String date_format : date_list) {
+        System.out.println("current date_format is: "+date_format);
+        String formatDateByReg = formatDateByReg(date_format, parseInt);
+        System.out.println("current format result is:"+formatDateByReg);
+    }
+}
+current date_format is: YYYY
+current format result is:2019
+current date_format is: YYYY-MM
+current format result is:2020-06
+current date_format is: YYYY-MM-dd
+current format result is:2020-07-19
+current date_format is: YYYY-MM-dd HH
+current format result is:2020-07-20 13
+current date_format is: YYYY-MM-dd HH:mm
+current format result is:2020-07-20 14:14
+current date_format is: YYYY-MM-dd HH:mm:ss
+current format result is:2020-07-20 14:15:08
+```
 
 > `2019年12月27日 17:20:34` Demo to show how to operation Protobuf in java.[Java中使用ProtoBuf数据](https://github.com/carolcoral/CommonUtil/wiki/Java中使用ProtoBuf数据)
 
