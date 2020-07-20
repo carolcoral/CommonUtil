@@ -453,6 +453,91 @@ public class DateUtil {
             return delayTime;
         }
     }
+    
+        /**
+     * 根据日期格式自动转换时间
+     * 最大精确到秒，不支持毫秒，最小精确到年，不支持世纪
+     * @param date_format 日期格式，例如 YYYY-MM-dd
+     * @param parseInt 前/后 多少，例如 1 根据date_format格式表达为当天时间的前一天
+     * @return 格式化后的时间
+     */
+    public static String formatDateByReg(String date_format, int parseInt){
+        String translateTimeToDate = "";
+        Long current_time = System.currentTimeMillis();
+        if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
+                date_format.contains("MM") &&
+                date_format.contains("dd") &&
+                date_format.contains("HH") &&
+                date_format.contains("mm") &&
+                date_format.contains("ss")){
+            //秒
+            long real_time = current_time + parseInt * 1000;
+            translateTimeToDate = DateUtil.translateTimeToDate(real_time, date_format);
+        }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
+                date_format.contains("MM") &&
+                date_format.contains("dd") &&
+                date_format.contains("HH") &&
+                date_format.contains("mm") &&
+                !date_format.contains("ss")){
+            //分钟
+            long real_time = current_time + parseInt * 60 * 1000;
+            translateTimeToDate = DateUtil.translateTimeToDate(real_time, date_format);
+        }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
+                date_format.contains("MM") &&
+                date_format.contains("dd") &&
+                date_format.contains("HH") &&
+                !date_format.contains("mm") &&
+                !date_format.contains("ss")){
+            //小时
+            long real_time = current_time + parseInt * 60 * 60 * 1000;
+            translateTimeToDate = DateUtil.translateTimeToDate(real_time, date_format);
+        }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
+                date_format.contains("MM") &&
+                date_format.contains("dd") &&
+                !date_format.contains("HH") &&
+                !date_format.contains("mm") &&
+                !date_format.contains("ss")){
+            //天
+            long real_time = current_time + parseInt * 24 * 60 * 60 * 1000;
+            translateTimeToDate = DateUtil.translateTimeToDate(real_time, date_format);
+        }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
+                date_format.contains("MM") &&
+                !date_format.contains("dd") &&
+                !date_format.contains("HH") &&
+                !date_format.contains("mm") &&
+                !date_format.contains("ss")){
+            //月
+            String toDate = DateUtil.translateTimeToDate(current_time, DateUtil.DATEFORMATE.FULLTIMEBY_yM);
+            Integer year = Integer.valueOf(toDate.split("-")[0]);
+            Integer month = Integer.valueOf(toDate.split("-")[1]);
+            int shang = parseInt / 12;
+            int yu = parseInt % 12;
+            year = year + shang;
+            month = month + yu;
+            if (month<0){
+                year = year - 1;
+                month = 12 + month;
+            }else if (month>12){
+                year = year + 1;
+                month = month - 12;
+            }
+            String i5 = month<10?"0"+String.valueOf(month):String.valueOf(month);
+            Long translateDateToTimestamp = DateUtil.translateDatetoTimestamp(String.valueOf(year) + "-" + i5, DateUtil.DATEFORMATE.FULLTIMEBY_yM);
+            translateTimeToDate = DateUtil.translateTimeToDate(translateDateToTimestamp, date_format);
+        }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
+                !date_format.contains("MM") &&
+                !date_format.contains("dd") &&
+                !date_format.contains("HH") &&
+                !date_format.contains("mm") &&
+                !date_format.contains("ss")){
+            //年
+            String year = DateUtil.translateTimeToDate(current_time, DATEFORMATE.BASETIME_yyyy);
+            String value = String.valueOf(Integer.valueOf(year) + parseInt);
+            Long aLong = DateUtil.translateDatetoTimestamp(value, DATEFORMATE.BASETIME_yyyy);
+            translateTimeToDate = DateUtil.translateTimeToDate(aLong, date_format);
+        }
+        return translateTimeToDate;
+    }
 
 
 }
