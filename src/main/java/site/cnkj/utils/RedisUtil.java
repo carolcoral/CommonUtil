@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @version 1.0 created by LXW on 2019/6/26 11:18
  */
 public class RedisUtil {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(RedisUtil.class);
 
     private RedisTemplate<String, Object> redisTemplate;
@@ -146,6 +147,20 @@ public class RedisUtil {
     }
 
     /**
+     * 普通缓存获取
+     * @param key 键
+     * @return 值
+     */
+    public Object getWithNoName(String key){
+        try {
+            return redisTemplate.opsForValue().get(key);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * 普通缓存放入
      * @param key 键
      * @param value 值
@@ -199,6 +214,22 @@ public class RedisUtil {
                     key = redisName + ":" + key;
                 }
                 return redisTemplate.opsForValue().increment(key, delta);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Long increment(String key, long delta, long timeOut) {
+        try {
+            if(delta >= 0){
+                if (StringUtils.isNotEmpty(redisName)){
+                    key = redisName + ":" + key;
+                }
+                Long increment = redisTemplate.opsForValue().increment(key, delta);
+                redisTemplate.expire(key, timeOut, TimeUnit.SECONDS);
+                return increment;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -276,7 +307,8 @@ public class RedisUtil {
                     key = redisName + ":" + key;
                 }
                 redisTemplate.opsForHash().putAll(key, map);
-                return expire(key, time);
+                redisTemplate.expire(key, time, TimeUnit.SECONDS);
+                return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -336,8 +368,9 @@ public class RedisUtil {
                 if (StringUtils.isNotEmpty(redisName)){
                     key = redisName + ":" + key;
                 }
-                hashSet(key, item, value);
-                return expire(key, time);
+                redisTemplate.opsForHash().put(key, item, value);
+                redisTemplate.expire(key, time, TimeUnit.SECONDS);
+                return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -506,7 +539,7 @@ public class RedisUtil {
                     key = redisName + ":" + key;
                 }
                 Long count = redisTemplate.opsForSet().add(key, values);
-                expire(key, time);
+                redisTemplate.expire(key, time, TimeUnit.SECONDS);
                 return count;
             }
         } catch (Exception e) {
@@ -636,7 +669,7 @@ public class RedisUtil {
                     key = redisName + ":" + key;
                 }
                 Long rightPush = redisTemplate.opsForList().rightPush(key, value);
-                expire(key, time);
+                redisTemplate.expire(key, time, TimeUnit.SECONDS);
                 return rightPush;
             }
         } catch (Exception e) {
@@ -677,7 +710,7 @@ public class RedisUtil {
                     key = redisName + ":" + key;
                 }
                 Long rightPushAll = redisTemplate.opsForList().rightPushAll(key, value);
-                expire(key, time);
+                redisTemplate.expire(key, time, TimeUnit.SECONDS);
                 return rightPushAll;
             }
         } catch (Exception e) {
@@ -767,9 +800,6 @@ public class RedisUtil {
      */
     public void publish(String channel, String message){
         try {
-            if (StringUtils.isNotEmpty(redisName)){
-                channel = redisName + ":" + channel;
-            }
             redisTemplate.convertAndSend(channel, message);
         } catch (Exception e) {
             e.printStackTrace();
@@ -1080,5 +1110,4 @@ public class RedisUtil {
         }
         return false;
     }
-
 }
