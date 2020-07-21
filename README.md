@@ -11,7 +11,9 @@
 ## [WIKI](https://github.com/carolcoral/CommonUtil/wiki)
 
 ## Log
-> `2020年7月20日 14:17:00` New date function for format date by The date-format.For example like this:
+> `2020年7月21日 11:20:14` fix some expire bug from [RedisUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/RedisUtil.java).
+
+> `2020年7月20日 14:17:00` New date function for format date by The date-format [DateUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/DateUtil.java).For example like this:
 
 ```java
 public static void main(String[] args) {
