@@ -539,5 +539,17 @@ public class DateUtil {
         return translateTimeToDate;
     }
 
+    /**
+     * 转换String类型的Date格式数据为指定格式
+     * @param time Date 格式日期字符串
+     * @param date_format 格式化后类型
+     * @return 格式化后字符串
+     */
+    public static String changeDateStringToFormatString(String time, String date_format) throws Exception{
+        SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+        SimpleDateFormat format2 = new SimpleDateFormat(date_format);
+        Date data = format.parse(time);
+        return format2.format(data);
+    }
 
 }
