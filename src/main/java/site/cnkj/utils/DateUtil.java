@@ -42,6 +42,8 @@ public class DateUtil {
         public static final String FULLTIMEBY_ms = "mm:ss";
         //时:分:秒.毫秒
         public static final String FULLTIMEBY_HmsS = "HH:mm:ss.SSS";
+        //年月 无分割
+        public static final String NOSEGMENTATION_yM = "yyyyMM";
         //年月日 无分割
         public static final String NOSEGMENTATION_yMd = "yyyyMMdd";
         //时分 无分割
