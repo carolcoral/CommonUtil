@@ -109,7 +109,7 @@ public class DateUtil {
      * @return 零点时间戳(0:0:0)
      */
     public static long getTodayEarlyMorning(String time, String timeFormat){
-        long current=translateDatetoTimestamp(time, timeFormat);//当前时间毫秒数
+        long current=translateDateToTimestamp(time, timeFormat);//当前时间毫秒数
         long zero=current/(1000*3600*24)*(1000*3600*24)-TimeZone.getDefault().getRawOffset();//前一天的零点零分零秒的毫秒数
         long startTime = zero + 24*60*60*1000;
         return startTime;
@@ -124,7 +124,7 @@ public class DateUtil {
      * @return 当天24点的时间戳(23:59:59)
      */
     public static long getTodayLaterMorning(String time, String timeFormat){
-        long current=translateDatetoTimestamp(time, timeFormat);//当前时间毫秒数
+        long current=translateDateToTimestamp(time, timeFormat);//当前时间毫秒数
         long zero=current/(1000*3600*24)*(1000*3600*24)-TimeZone.getDefault().getRawOffset();//前一天的零点零分零秒的毫秒数
         long endTime = zero + 24*60*60*1000*2 - 1;
         return endTime;
@@ -271,7 +271,7 @@ public class DateUtil {
      * @param timeFormat 时间对应的格式
      * @return 13位时间戳
      */
-    public static Long translateDatetoTimestamp(String time, String timeFormat){
+    public static Long translateDateToTimestamp(String time, String timeFormat){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
         Date date = null;
         try {
@@ -313,7 +313,7 @@ public class DateUtil {
      */
     public static List getDesignationDay(int num, String time, String timeFormat, String timeTranslate){
         List days = new ArrayList();
-        Long timestamp_time = translateDatetoTimestamp(time, timeFormat);
+        Long timestamp_time = translateDateToTimestamp(time, timeFormat);
         for (int i = 0; i < num; i++) {
             Long new_time = timestamp_time - i*24*60*60*1000;
             String today = translateTimeToDate(new_time, timeTranslate);
@@ -543,7 +543,7 @@ public class DateUtil {
                 month = month - 12;
             }
             String i5 = month<10?"0"+String.valueOf(month):String.valueOf(month);
-            Long translateDateToTimestamp = DateUtil.translateDatetoTimestamp(String.valueOf(year) + "-" + i5, DateUtil.DATEFORMATE.FULLTIMEBY_yM);
+            Long translateDateToTimestamp = DateUtil.translateDateToTimestamp(String.valueOf(year) + "-" + i5, DateUtil.DATEFORMATE.FULLTIMEBY_yM);
             translateTimeToDate = DateUtil.translateTimeToDate(translateDateToTimestamp, date_format);
         }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
                 !date_format.contains("MM") &&
@@ -554,7 +554,7 @@ public class DateUtil {
             //年
             String year = DateUtil.translateTimeToDate(current_time, DATEFORMATE.BASETIME_yyyy);
             String value = String.valueOf(Integer.valueOf(year) + parseInt);
-            Long aLong = DateUtil.translateDatetoTimestamp(value, DATEFORMATE.BASETIME_yyyy);
+            Long aLong = DateUtil.translateDateToTimestamp(value, DATEFORMATE.BASETIME_yyyy);
             translateTimeToDate = DateUtil.translateTimeToDate(aLong, date_format);
         }else {
             translateTimeToDate = DateUtil.translateTimeToDate(current_time, date_format);
