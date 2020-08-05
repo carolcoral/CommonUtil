@@ -1,5 +1,7 @@
 package site.cnkj.utils;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -83,9 +85,11 @@ public class DateUtil {
      * @return
      */
     public static Date dateStringToDate(String date, String timeFormat){
-        SimpleDateFormat sdf = new SimpleDateFormat(timeFormat);
         try {
-            return sdf.parse(date);
+            if (StringUtils.isNotEmpty(date)){
+                SimpleDateFormat sdf = new SimpleDateFormat(timeFormat);
+                return sdf.parse(date);
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -133,12 +137,14 @@ public class DateUtil {
      * @return 2018/10/09 0:0:0 的时间戳
      */
     public static long getLastDaysTimestamp(int maxDays){
-        //当前时间毫秒数
-        long current=System.currentTimeMillis();
-        //今天零点零分零秒的毫秒数
-        long zero=current/(1000*3600*24)*(1000*3600*24)-TimeZone.getDefault().getRawOffset();
-        long lastThirty = zero - 24*60*60*1000*(maxDays);
-        return lastThirty;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        long time = calendar.getTime().getTime();
+        return time - 24*60*60*1000*(maxDays);
     }
 
     /**
@@ -247,15 +253,16 @@ public class DateUtil {
      * @return
      */
     public static Date translateTimestampToDate(Long timestamp, String timeFormat){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
-        String time = translateTimeToDate(timestamp, timeFormat);
-        Date da = null;
         try {
-            da = simpleDateFormat.parse(time);
+            String date = translateTimeToDate(timestamp, timeFormat);
+            if (StringUtils.isNotEmpty(date)){
+                SimpleDateFormat sdf = new SimpleDateFormat(timeFormat);
+                return sdf.parse(date);
+            }
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return da;
+        return null;
     }
 
     /**
@@ -596,3 +603,4 @@ public class DateUtil {
         return DateUtil.translateDateToString(c.getTime(), format);
     }
 }
+
