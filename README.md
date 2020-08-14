@@ -66,11 +66,3 @@ mvn install:install-file -Dfile=/User/carol/Desktop/CommonUtil-1.0.jar -DgroupId
     <version>1.0</version>
 </dependency>
 ```
-
-## Use in project
-
-||||||
-|:---|:--|:--|:--|:--|
-|[RedisUtil](https://github.com/carolcoral/CommonUtil/wiki/RedisUtil)|[ElasticSearch](https://github.com/carolcoral/CommonUtil/wiki/ElasticSearch)|[RestTemplateUtil](https://github.com/carolcoral/CommonUtil/wiki/RestTemplateUtil)|[MongodbUtil](https://github.com/carolcoral/CommonUtil/wiki/MongodbUtil)|[Thread Pool](https://github.com/carolcoral/CommonUtil/wiki/Thread-Pool)|
-|[SSH2Util](https://github.com/carolcoral/CommonUtil/wiki/SSH2Util)|[DateUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/DateUtil.java)|[FileEncryptDecrypt](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/FileEncryptDecrypt.java)|[FileUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/FileUtil.java)|
-|[GracefulShutdown](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/GracefulShutdown.java)|[HttpCommonUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/HttpCommonUtil.java)|[KafkaUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/KafkaUtil.java)|[LoggerUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/LoggerUtil.java)|[StringUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/StringUtil.java)|
