@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52b7c556-aac6-402c-b840-5f2564f1f5d7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/repository/site/cnkj/CommonUtil/maven-metadata-local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maven/CommonUtil-1.1.0.pom" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maven/CommonUtil-1.1.0.pom" beforeDir="false" afterPath="$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/CommonUtil-1.1.0.pom" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maven/_remote.repositories" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/maven/_remote.repositories" beforeDir="false" afterPath="$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/_remote.repositories" afterDir="false" />
+    <list default="true" id="52b7c556-aac6-402c-b840-5f2564f1f5d7" name="Default" comment="maven">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wiki" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,109 +16,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="KafkaUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/site/cnkj/utils/KafkaUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3520">
-              <caret line="181" column="20" selection-start-line="181" selection-start-column="20" selection-end-line="181" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProtobufOuter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cnkj/site/data/ProtobufOuter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1300">
-              <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#37264#0" expanded="true" />
-                <element signature="e#2522#2523#0" expanded="true" />
-                <element signature="e#2560#2561#0" expanded="true" />
-                <element signature="e#2595#2596#0" expanded="true" />
-                <element signature="e#2663#2664#0" expanded="true" />
-                <element signature="e#2778#2779#0" expanded="true" />
-                <element signature="e#2827#2828#0" expanded="true" />
-                <element signature="e#7896#7897#0" expanded="true" />
-                <element signature="e#7963#7964#0" expanded="true" />
-                <element signature="e#8469#8470#0" expanded="true" />
-                <element signature="e#8515#8516#0" expanded="true" />
-                <element signature="e#10109#10110#0" expanded="true" />
-                <element signature="e#10145#10146#0" expanded="true" />
-                <element signature="e#17539#17540#0" expanded="true" />
-                <element signature="e#17598#17599#0" expanded="true" />
-                <element signature="e#20418#20419#0" expanded="true" />
-                <element signature="e#20483#20484#0" expanded="true" />
-                <element signature="e#22670#22671#0" expanded="true" />
-                <element signature="e#22732#22733#0" expanded="true" />
-                <element signature="e#25105#25106#0" expanded="true" />
-                <element signature="e#25148#25149#0" expanded="true" />
-                <element signature="e#27129#27130#0" expanded="true" />
-                <element signature="e#27204#27205#0" expanded="true" />
-                <element signature="e#27762#27763#0" expanded="true" />
-                <element signature="e#27816#27817#0" expanded="true" />
-                <element signature="e#30029#30030#0" expanded="true" />
-                <element signature="e#30111#30112#0" expanded="true" />
-                <element signature="e#31356#31357#0" expanded="true" />
-                <element signature="e#31400#31401#0" expanded="true" />
-                <element signature="e#33176#33177#0" expanded="true" />
-                <element signature="e#33223#33224#0" expanded="true" />
-                <element signature="e#33860#33861#0" expanded="true" />
-                <element signature="e#33897#33898#0" expanded="true" />
-                <element signature="e#34005#34006#0" expanded="true" />
-                <element signature="e#34042#34043#0" expanded="true" />
-                <element signature="e#34160#34161#0" expanded="true" />
-                <element signature="e#34207#34208#0" expanded="true" />
-                <element signature="e#34935#34936#0" expanded="true" />
-                <element signature="e#34968#34969#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RedisUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/site/cnkj/utils/RedisUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="229" column="30" lean-forward="true" selection-start-line="229" selection-start-column="30" selection-end-line="229" selection-end-column="30" />
+            <state relative-caret-position="477">
+              <caret line="172" column="20" lean-forward="true" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
               <folding>
-                <element signature="n#parent#0;n#project#0;n#!!top" />
-                <element signature="n#properties#0;n#project#0;n#!!top" />
-                <element signature="n#dependencies#0;n#project#0;n#!!top" />
                 <element signature="n#build#0;n#project#0;n#!!top" />
               </folding>
             </state>
           </provider>
           <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-        </entry>
-      </file>
-      <file leaf-file-name="ProtobufOuterOperation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cnkj/site/data/ProtobufOuterOperation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="maven-metadata-local.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/maven-metadata-local.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -168,8 +73,8 @@
         <option value="$PROJECT_DIR$/src/main/java/cnkj/site/data/ProtobufOuter.java" />
         <option value="$PROJECT_DIR$/src/main/java/site/cnkj/utils/StringUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/cnkj/site/data/ProtobufOuterOperation.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/repository/site/cnkj/CommonUtil/maven-metadata-local.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -236,41 +141,6 @@
             <path>
               <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
               <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-              <item name="site" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-              <item name="site" type="462c0819:PsiDirectoryNode" />
-              <item name="cnkj" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-              <item name="site" type="462c0819:PsiDirectoryNode" />
-              <item name="cnkj" type="462c0819:PsiDirectoryNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-              <item name="site" type="462c0819:PsiDirectoryNode" />
-              <item name="cnkj" type="462c0819:PsiDirectoryNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="1.1.0" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -278,29 +148,6 @@
               <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CommonUtil" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CommonUtil" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -471,6 +318,7 @@
       <workItem from="1578970199029" duration="617000" />
       <workItem from="1579241019347" duration="2236000" />
       <workItem from="1579419449173" duration="2484000" />
+      <workItem from="1597628550773" duration="158000" />
     </task>
     <task id="LOCAL-00001" summary="repair some lombok questions">
       <created>1574320188766</created>
@@ -623,7 +471,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80836000" />
+    <option name="totallyTimeSpent" value="80994000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -650,7 +498,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.3642312" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3293348" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19349681" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.195629" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="bottom" id="SonarLint" order="7" weight="0.3293348" />
@@ -768,13 +616,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/mongodb/mongodb-driver/3.8.2/mongodb-driver-3.8.2-sources.jar!/com/mongodb/client/MongoDatabase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="236" column="25" selection-start-line="236" selection-start-column="14" selection-end-line="236" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.1.5.RELEASE/spring-data-commons-2.1.5.RELEASE-sources.jar!/org/springframework/data/mapping/context/MappingContext.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1022,14 +863,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wiki/ElasticSearch.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/wiki/ElasticSearch.md" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/1.1.1/kafka-clients-1.1.1-sources.jar!/org/apache/kafka/clients/consumer/OffsetAndTimestamp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -1046,7 +880,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/site/cnkj/utils/KafkaUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3520">
+        <state relative-caret-position="388">
           <caret line="181" column="20" selection-start-line="181" selection-start-column="20" selection-end-line="181" selection-end-column="20" />
         </state>
       </provider>
@@ -1116,30 +950,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/site/cnkj/utils/RedisUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
-          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/_remote.repositories">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="229" column="30" lean-forward="true" selection-start-line="229" selection-start-column="30" selection-end-line="229" selection-end-column="30" />
-          <folding>
-            <element signature="n#parent#0;n#project#0;n#!!top" />
-            <element signature="n#properties#0;n#project#0;n#!!top" />
-            <element signature="n#dependencies#0;n#project#0;n#!!top" />
-            <element signature="n#build#0;n#project#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/_remote.repositories" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/1.1.1/kafka-clients-1.1.1-sources.jar!/org/apache/kafka/common/TopicPartition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -1154,24 +972,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/CommonUtil-1.1.0.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4447" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/1.1.0/CommonUtil-1.1.0.pom" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cnkj/site/data/ProtobufOuterOperation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        <state relative-caret-position="120">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/maven-metadata-local.xml">
+    <entry file="file://$PROJECT_DIR$/repository/site/cnkj/CommonUtil/maven-metadata-local.xml" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        <state relative-caret-position="477">
+          <caret line="172" column="20" lean-forward="true" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
+          <folding>
+            <element signature="n#build#0;n#project#0;n#!!top" />
+          </folding>
         </state>
       </provider>
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
     </entry>
   </component>
   <component name="masterDetails">

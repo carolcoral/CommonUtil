@@ -27,7 +27,7 @@ public class MongoClientsInit {
 
     private HashMap<String, MongoDatabase> mongoClientDatabases = new HashMap<>();
 
-    private String getDatabase(String mongoUri){
+    private String getDatabase(String mongoUri) throws Exception{
         String databaseName = "";
         String substring = mongoUri.substring(10, mongoUri.length());
         String[] split = substring.split("/");
