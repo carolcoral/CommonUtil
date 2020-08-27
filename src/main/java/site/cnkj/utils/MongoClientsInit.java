@@ -25,7 +25,7 @@ import java.util.HashMap;
 @ConfigurationProperties(prefix = "spring.data.mongodb")
 public class MongoClientsInit {
 
-    private HashMap<String, String> uri = new HashMap<>();
+    private HashMap<String, String> uri;
 
     private HashMap<String, MongoDatabase> mongoClientDatabases = new HashMap<>();
 
@@ -48,10 +48,8 @@ public class MongoClientsInit {
         if (uri.size() > 0){
             for (String name : uri.keySet()) {
                 String url = uri.get(name);
-                MongoDatabase mongoClientDatabase;
-                try (MongoClient mongoClient = MongoClients.create(url)) {
-                    mongoClientDatabase = mongoClient.getDatabase(getDatabase(url));
-                }
+                MongoClient mongoClient = MongoClients.create(url);
+                MongoDatabase mongoClientDatabase = mongoClient.getDatabase(getDatabase(url));
                 mongoClientDatabases.put(name, mongoClientDatabase);
             }
         }
