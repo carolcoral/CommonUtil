@@ -1,4 +1,4 @@
-package cnkj.site.data;
+package site.cnkj.data;
 
 import com.google.protobuf.ByteString;
 import com.googlecode.protobuf.format.JsonFormat;
