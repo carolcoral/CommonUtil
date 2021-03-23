@@ -37,13 +37,15 @@ public class HttpCommonUtil {
             ip = request.getRemoteAddr();
             if(ip.equals("127.0.0.1")){
                 //根据网卡取本机配置的IP
-                InetAddress inet=null;
+                InetAddress interNet=null;
                 try {
-                    inet = InetAddress.getLocalHost();
+                    interNet = InetAddress.getLocalHost();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                ip= inet.getHostAddress();
+                if (interNet != null){
+                    ip= interNet.getHostAddress();
+                }
             }
         }
         // 多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
@@ -60,10 +62,11 @@ public class HttpCommonUtil {
         InetAddress address = null;
         try {
             address = InetAddress.getLocalHost();
+            return address.getHostAddress();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return address.getHostAddress();
+        return null;
     }
 
     //获取本地机器名
@@ -75,10 +78,11 @@ public class HttpCommonUtil {
         InetAddress address = null;
         try {
             address = InetAddress.getLocalHost();
+            return address.getHostName();
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        return address.getHostName();
+        return null;
     }
 
     /**

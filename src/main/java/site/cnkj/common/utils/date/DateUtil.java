@@ -10,8 +10,33 @@ import java.util.*;
 /*
  * @version 1.0 created by LXW on 2018/11/8 16:11
  */
-public class DateUtil {
+public final class DateUtil {
 
+     public enum FORMAT_ENUM{
+        BASETIME_yyyy("yyyy"),BASETIME_MM("MM"),BASETIME_dd("dd"),BASETIME_HH("HH"),BASETIME_mm("mm"),BASETIME_ss("ss"), BASETIME_SSS("SSS"),
+        FULLTIMEBY_yMd("yyyy-MM-dd"),FULLTIMEBY_yMdH("yyyy-MM-dd HH"),FULLTIMEBY_yMdHm("yyyy-MM-dd HH:mm"),
+        FULLTIMEBY_yM("yyyy-MM"),FULLTIMEBY_Md("MM-dd"),FULLTIMEBY_Hms("HH:mm:ss"),FULLTIMEBY_Hm("HH:mm"),FULLTIMEBY_ms("mm:ss"),
+        FULLTIMEBY_HmsS("HH:mm:ss.SSS"),NOSEGMENTATION_yM("yyyyMM"),NOSEGMENTATION_yMd("yyyyMMdd"),NOSEGMENTATION_Hm("HHmm"),
+        NOSEGMENTATION_Hms("HHmmss"),NOSEGMENTATION_HmsS("HHmmssSSS"),NOSEGMENTATION_yMdHm("yyyyMMddHHmm"),NOSEGMENTATION_yMdHms("yyyyMMddHHmmss"),
+        NOSEGMENTATION_yMdHmsS("yyyyMMddHHmmssSSS"),POINT_yMd("yyyy.MM.dd"),POINT_Hms("HH.mm.ss"),FULLTIMEBY_yMdHms("yyyy-MM-dd HH:mm:ss"),
+        FULLTIMEBY_yMdHmsS("yyyy-MM-dd HH:mm:ss.SSS"),FULLTIMEFORMAT_yMd("yyyy年MM月dd日"),FULLTIMEFORMAT_Hms("HH时mm分ss秒"),
+        FULLTIMEFORMAT_yMdHms("yyyy年MM月dd日 HH时mm分ss秒"),FULLTIMEFORMAT_yMdHmsS("yyyy年MM月dd日 HH时mm分ss秒SSS毫秒");
+
+        private FORMAT_ENUM(String value) {
+            this.value = value;
+        }
+
+        private String value;
+
+        public String getValue(){
+            return value;
+        }
+    }
+
+    /**
+     * @Deprecated use enum FORMAT_ENUM
+     */
+    @Deprecated
     public static class FORMAT{
         //基本单位 年
         public static final String BASETIME_yyyy = "yyyy";
@@ -98,7 +123,7 @@ public class DateUtil {
     }
 
     public static String timeStamp2fulltime(Date date){
-        SimpleDateFormat sdf = new SimpleDateFormat(FORMAT.FULLTIMEBY_yMdHms);
+        SimpleDateFormat sdf = new SimpleDateFormat(FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
         return sdf.format(date);
     }
 
@@ -112,8 +137,7 @@ public class DateUtil {
     public static long getTodayEarlyMorning(String time, String timeFormat){
         long current=translateDateToTimestamp(time, timeFormat);//当前时间毫秒数
         long zero=current/(1000*3600*24)*(1000*3600*24)-TimeZone.getDefault().getRawOffset();//前一天的零点零分零秒的毫秒数
-        long startTime = zero + 24*60*60*1000;
-        return startTime;
+        return zero + 24*60*60*1000;
     }
 
 
@@ -127,8 +151,7 @@ public class DateUtil {
     public static long getTodayLaterMorning(String time, String timeFormat){
         long current=translateDateToTimestamp(time, timeFormat);//当前时间毫秒数
         long zero=current/(1000*3600*24)*(1000*3600*24)-TimeZone.getDefault().getRawOffset();//前一天的零点零分零秒的毫秒数
-        long endTime = zero + 24*60*60*1000*2 - 1;
-        return endTime;
+        return zero + 24*60*60*1000*2 - 1;
     }
 
 
@@ -160,7 +183,7 @@ public class DateUtil {
             type = "s";
         }
         if (timeFormat == null){
-            timeFormat = FORMAT.FULLTIMEBY_yMdHmsS;
+            timeFormat = FORMAT_ENUM.FULLTIMEBY_yMdHmsS.getValue();
         }
         long date = System.currentTimeMillis();
         Long now_time = new Long(1);
@@ -175,8 +198,7 @@ public class DateUtil {
         }else if ("d".equals(type)){
             now_time = date - pastTime*1000*60*60*24;
         }
-        String finalTime = translateTimeToDate(now_time, timeFormat);
-        return finalTime;
+        return translateTimeToDate(now_time, timeFormat);
     }
 
     public static String getThePastTime(int pastTime){
@@ -202,8 +224,7 @@ public class DateUtil {
     public static String getNowTimeByFormat(String timeFormat){
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
-        String today = simpleDateFormat.format(date);
-        return today;
+        return simpleDateFormat.format(date);
     }
 
     /**
@@ -214,8 +235,7 @@ public class DateUtil {
      */
     public static String translateTimeToDate(Long timestamp, String timeFormat){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
-        String da = simpleDateFormat.format(timestamp);
-        return da;
+        return simpleDateFormat.format(timestamp);
     }
 
     /**
@@ -226,8 +246,7 @@ public class DateUtil {
      */
     public static String translateDateToString(Date date, String timeFormat){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
-        String da = simpleDateFormat.format(date);
-        return da;
+        return simpleDateFormat.format(date);
     }
 
     /**
@@ -277,10 +296,11 @@ public class DateUtil {
         Date date = null;
         try {
             date = simpleDateFormat.parse(time);
+            return date.getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return date.getTime();
+        return null;
     }
 
 
@@ -288,16 +308,15 @@ public class DateUtil {
      * 序列化字符串为时间格式
      * @param time 需要转换的字符串 (20181011 10:11:12.013)
      * @param timeFormat 字符串对应的时间格式 (yyyyMMdd HH:mm:ss.SSS)
-     * @param timeTranselate 转换后需要的字符串格式 (yyyy年M月dd日 HH时mm分ss秒SSS毫秒)
+     * @param timeTranslate 转换后需要的字符串格式 (yyyy年M月dd日 HH时mm分ss秒SSS毫秒)
      * @return 2018年10月11日 10时11分12秒13毫秒
      */
-    public static String serializationDate(String time, String timeFormat, String timeTranselate){
+    public static String serializationDate(String time, String timeFormat, String timeTranslate){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeFormat);
         try {
             Date date = simpleDateFormat.parse(time);
-            SimpleDateFormat dateFormat = new SimpleDateFormat(timeTranselate);
-            String formatTime = dateFormat.format(date);
-            return formatTime;
+            SimpleDateFormat dateFormat = new SimpleDateFormat(timeTranslate);
+            return dateFormat.format(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -389,7 +408,7 @@ public class DateUtil {
         long delayTime = 0;
         if (executorTime <= 24 && executorTime>0){
             int num = 24 / executorTime;
-            long tomorrowEarlyMorning = getTodayEarlyMorning(translateTimeToDate(getCurrentTime(), FORMAT.FULLTIMEBY_yMdHmsS), FORMAT.FULLTIMEBY_yMdHmsS);
+            long tomorrowEarlyMorning = getTodayEarlyMorning(translateTimeToDate(getCurrentTime(), FORMAT_ENUM.FULLTIMEBY_yMdHmsS.getValue()), FORMAT_ENUM.FULLTIMEBY_yMdHmsS.getValue());
             long todayEarlyMorning = tomorrowEarlyMorning - 24*60*60*1000;
             long todayHour = num * executorTime * 3600000 + todayEarlyMorning;
             if (todayHour < getCurrentTime() && getCurrentTime() < tomorrowEarlyMorning){
@@ -452,12 +471,11 @@ public class DateUtil {
      * @return      2020-03-24 19:24:31
      */
     public static String switchTime(String time) throws ParseException {
-        SimpleDateFormat format2 = new SimpleDateFormat(FORMAT.FULLTIMEBY_yMdHms);
+        SimpleDateFormat format2 = new SimpleDateFormat(FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z");//格式化的表达式
         time = time.replace("Z", " UTC");//是空格+UTC
         Date data = format.parse(time);
-        String format1 = format2.format(data);
-        return format1;
+        return format2.format(data);
     }
 
     /**
@@ -472,8 +490,7 @@ public class DateUtil {
         SimpleDateFormat df1 = new SimpleDateFormat ("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK);
         Date date1 =  df1.parse(date.toString());
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = df2.format(date1);
-        return format;
+        return df2.format(date1);
     }
 
     /**
@@ -529,7 +546,7 @@ public class DateUtil {
                 !date_format.contains("mm") &&
                 !date_format.contains("ss")){
             //月
-            String toDate = DateUtil.translateTimeToDate(current_time, DateUtil.FORMAT.FULLTIMEBY_yM);
+            String toDate = DateUtil.translateTimeToDate(current_time, FORMAT_ENUM.FULLTIMEBY_yM.getValue());
             Integer year = Integer.valueOf(toDate.split("-")[0]);
             Integer month = Integer.valueOf(toDate.split("-")[1]);
             int shang = parseInt / 12;
@@ -544,7 +561,7 @@ public class DateUtil {
                 month = month - 12;
             }
             String i5 = month<10?"0"+String.valueOf(month):String.valueOf(month);
-            Long translateDateToTimestamp = DateUtil.translateDateToTimestamp(String.valueOf(year) + "-" + i5, DateUtil.FORMAT.FULLTIMEBY_yM);
+            Long translateDateToTimestamp = DateUtil.translateDateToTimestamp(String.valueOf(year) + "-" + i5, FORMAT_ENUM.FULLTIMEBY_yM.getValue());
             translateTimeToDate = DateUtil.translateTimeToDate(translateDateToTimestamp, date_format);
         }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
                 !date_format.contains("MM") &&
@@ -553,9 +570,9 @@ public class DateUtil {
                 !date_format.contains("mm") &&
                 !date_format.contains("ss")){
             //年
-            String year = DateUtil.translateTimeToDate(current_time, FORMAT.BASETIME_yyyy);
+            String year = DateUtil.translateTimeToDate(current_time, FORMAT_ENUM.BASETIME_yyyy.getValue());
             String value = String.valueOf(Integer.valueOf(year) + parseInt);
-            Long aLong = DateUtil.translateDateToTimestamp(value, FORMAT.BASETIME_yyyy);
+            Long aLong = DateUtil.translateDateToTimestamp(value, FORMAT_ENUM.BASETIME_yyyy.getValue());
             translateTimeToDate = DateUtil.translateTimeToDate(aLong, date_format);
         }else {
             translateTimeToDate = DateUtil.translateTimeToDate(current_time, date_format);
@@ -618,13 +635,13 @@ public class DateUtil {
      */
     public static List<JSONObject> getAroundTimeList(String startTime, String endTime, int cut){
         List<JSONObject> times = new LinkedList<>();
-        Long startTimestamp = DateUtil.translateDateToTimestamp(startTime, DateUtil.FORMAT.FULLTIMEBY_yMdHms)/1000;
-        Long endTimestamp = DateUtil.translateDateToTimestamp(endTime, DateUtil.FORMAT.FULLTIMEBY_yMdHms)/1000;
+        Long startTimestamp = DateUtil.translateDateToTimestamp(startTime, FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue())/1000;
+        Long endTimestamp = DateUtil.translateDateToTimestamp(endTime, FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue())/1000;
         List<String> list = DateUtil.splitTimestamp(cut, startTimestamp, endTimestamp);
         for (String s : list) {
             String[] split = s.split(",");
-            Date start_time = DateUtil.translateTimestampToDate(Long.valueOf(split[0]), DateUtil.FORMAT.FULLTIMEBY_yMdHms);
-            Date end_time = DateUtil.translateTimestampToDate(Long.valueOf(split[1]), DateUtil.FORMAT.FULLTIMEBY_yMdHms);
+            Date start_time = DateUtil.translateTimestampToDate(Long.valueOf(split[0]), FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
+            Date end_time = DateUtil.translateTimestampToDate(Long.valueOf(split[1]), FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("startTime", start_time);
             jsonObject.put("endTime", end_time);

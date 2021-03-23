@@ -15,6 +15,7 @@ import site.cnkj.common.utils.io.StringUtil;
 /*
  * @version 1.0 created by LXW on 2019/4/1 9:13
  */
+@Deprecated
 @Component
 public class LoggerUtil {
 
@@ -62,8 +63,8 @@ public class LoggerUtil {
     @Data
     public static class MonitorEntity {
         private String hostName = HttpCommonUtil.getLocalHostName();//机器名
-        private String timestamp = DateUtil.translateTimeToDate(DateUtil.getCurrentTime(), DateUtil.FORMAT.FULLTIMEBY_yMdHmsS);//时间
-        private String time = DateUtil.translateTimeToDate(DateUtil.getCurrentTime(), DateUtil.FORMAT.FULLTIMEBY_yMdHmsS);//时间
+        private String timestamp = DateUtil.translateTimeToDate(DateUtil.getCurrentTime(), DateUtil.FORMAT_ENUM.FULLTIMEBY_yMdHmsS.getValue());//时间
+        private String time = DateUtil.translateTimeToDate(DateUtil.getCurrentTime(), DateUtil.FORMAT_ENUM.FULLTIMEBY_yMdHmsS.getValue());//时间
         private String level;//级别
         @Nullable private String status;//状态枚举值
         @Nullable private String type;//类型

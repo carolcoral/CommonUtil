@@ -184,4 +184,15 @@ public class StringUtil {
         return null;
     }
 
+    public static String CapitalizeFirstLetter(String input){
+        try {
+            char[] chars = input.toCharArray();
+            chars[0]-=32;
+            return String.valueOf(chars);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

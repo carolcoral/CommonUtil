@@ -15,7 +15,9 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import site.cnkj.common.object.redis.Receiver;
 import site.cnkj.common.utils.data.RedisUtil;
 
-
+/**
+ * Created by rx on 2018/8/22.
+ */
 @Configuration
 public class RedisConfig {
 

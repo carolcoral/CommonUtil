@@ -7,31 +7,17 @@ package site.cnkj.common.object.servlet;
  */
 public enum  ResponseBodyCode {
 
-    SUCCESS{
-        @Override
-        public String getCode() {
-            return "000000";
-        }
-    },
-    FAILED{
-        @Override
-        public String getCode() {
-            return "100000";
-        }
-    },
-    WARNING{
-        @Override
-        public String getCode() {
-            return "200000";
-        }
-    },
-    ERROR{
-        @Override
-        public String getCode() {
-            return "300000";
-        }
-    };
+    SUCCESS("000000"), FAILED("100000"), WARNING("200000"), ERROR("300000");
 
-    public abstract String getCode();
+
+    private String code;
+
+    ResponseBodyCode(String code){
+        this.code = code;
+    }
+
+    public String getCode(){
+        return this.code;
+    }
 
 }

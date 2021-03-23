@@ -8,7 +8,7 @@ public class CommonInfo {
 
     /**
      * @Desc ResponseCode for servlet request callback
-     * @Version delete from 0.3.5 version and replace by cn.migu.log.ResponseBodyCode
+     * @Version delete from 0.3.5 version and replace by <url>cn.migu.log.common.object.servlet.ResponseBodyCode</url>
      */
     @Deprecated
     public static class ResponseCode{

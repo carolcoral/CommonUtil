@@ -1,7 +1,16 @@
 package site.cnkj.utils;
 
+import com.mongodb.*;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import org.apache.commons.lang.StringUtils;
+import org.bson.Document;
 import site.cnkj.common.utils.io.DES;
 import site.cnkj.common.utils.io.RSAEncrypt;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class CommonApplicationTests {
 
@@ -81,6 +90,61 @@ public class CommonApplicationTests {
 		}catch (Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	private static HashMap<String, MongoDatabase> mongoClientDatabases = new HashMap<>();
+
+	private static String getDatabase(String url) {
+		String databaseName = "";
+		String substring = url.substring(10, url.length());
+		String[] split = substring.split("/");
+		String database = split[1];
+		if (database.contains("?")){
+			databaseName = database.split("\\?")[0];
+		}else {
+			databaseName = database;
+		}
+		return databaseName;
+	}
+
+	private static List<ServerAddress> createServerAddress(String url){
+		List<ServerAddress> serverAddresses = new ArrayList<>();
+		String substring = url.substring(10, url.length());
+		String[] split = substring.split("/");
+		String[] hosts = split[0].split(",", -1);
+		for (String host : hosts) {
+			if (StringUtils.isNotEmpty(host)){
+				String[] strings = host.split(":", -1);
+				ServerAddress serverAddress = new ServerAddress(strings[0], Integer.valueOf(strings[1]));
+				serverAddresses.add(serverAddress);
+			}
+		}
+		return serverAddresses;
+	}
+
+	private static void test3(){
+		String url = "mongodb://10.25.245.121:17017/log_storage_stable?connectTimeoutMS=50&maxPoolSize=5&waitQueueTimeoutMS=100&socketTimeoutMS=1000&maxIdleTimeMS=60000";
+		try {
+			//配制连接池
+			MongoClientOptions.Builder mongoClientBuilder = new MongoClientOptions.Builder();
+			mongoClientBuilder.connectionsPerHost(30);
+			mongoClientBuilder.connectTimeout(30000);
+			mongoClientBuilder.retryWrites(true);
+			//MongoClientOptions mongoClientOptions = mongoClientBuilder.build();
+
+			MongoClient mongoClient = new MongoClient(new MongoClientURI(url, mongoClientBuilder));
+			MongoDatabase mongoClientDatabase = mongoClient.getDatabase(getDatabase(url));
+			MongoCursor<Document> cursor = mongoClientDatabase.getCollection("a_10000_00062").find().limit(10).iterator();
+			while (cursor.hasNext()){
+				System.out.println(cursor.next().toJson());
+			}
+		}catch (MongoClientException e){
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		test3();
 	}
 
 }

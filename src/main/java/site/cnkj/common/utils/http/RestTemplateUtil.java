@@ -21,10 +21,10 @@ public class RestTemplateUtil {
 
     private RestTemplate restTemplate;
 
-    @Value("${restTemplate.remote.alarm.url.email}")
+    @Value("${restTemplate.remote.alarm.url.email:''}")
     private String alarmEmailUrl = "";
 
-    @Value("${restTemplate.remote.alarm.url.sms}")
+    @Value("${restTemplate.remote.alarm.url.sms:''}")
     private String alarmSMSUrl = "";
 
     public void setRestTemplate(RestTemplate restTemplate) {

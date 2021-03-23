@@ -44,7 +44,7 @@ public class FileEncryptDecrypt {
     public static boolean encrypt(String keyPath, String input, String output){
         FileInputStream fileInputStream = null;
         FileOutputStream fileOutputStream = null;
-        List<String> list = new ArrayList();
+        List<String> list = new ArrayList<>();
         try {
             byte[] buffer = Files.readAllBytes(Paths.get(keyPath));
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(buffer);
@@ -53,20 +53,28 @@ public class FileEncryptDecrypt {
 
             File inputFile = new File(input);
             File outputFile = new File(output);
-            fileInputStream = new FileInputStream(inputFile);
-            fileOutputStream = new FileOutputStream(outputFile);
-            byte[] inputByte = new byte[116];
-            int len;
-            while((len = fileInputStream.read(inputByte)) != -1){
-                list.add(new String(inputByte, 0, len));
+            try {
+                fileInputStream = new FileInputStream(inputFile);
+                fileOutputStream = new FileOutputStream(outputFile);
+                byte[] inputByte = new byte[116];
+                int len;
+                while((len = fileInputStream.read(inputByte)) != -1){
+                    list.add(new String(inputByte, 0, len));
+                }
+                for (String s : list) {
+                    byte [] encrypted = encrypt(publicKey, s);
+                    fileOutputStream.write(encrypted);
+                    fileOutputStream.flush();
+                }
+            }finally {
+                if (fileInputStream != null){
+                    fileInputStream.close();
+                }
+                if (fileOutputStream != null){
+                    fileOutputStream.close();
+                }
             }
-            for (String s : list) {
-                byte [] encrypted = encrypt(publicKey, s);
-                fileOutputStream.write(encrypted);
-                fileOutputStream.flush();
-            }
-            fileOutputStream.close();
-            fileInputStream.close();
+
             return true;
         } catch (Exception e) {
             e.printStackTrace();

@@ -84,10 +84,12 @@ public class RSAEncrypt {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        keyPairGen.initialize(1024, new SecureRandom());
-        KeyPair keyPair= keyPairGen.generateKeyPair();
-        this.privateKey= (RSAPrivateKey) keyPair.getPrivate();
-        this.publicKey= (RSAPublicKey) keyPair.getPublic();
+        if (keyPairGen != null){
+            keyPairGen.initialize(1024, new SecureRandom());
+            KeyPair keyPair= keyPairGen.generateKeyPair();
+            this.privateKey= (RSAPrivateKey) keyPair.getPrivate();
+            this.publicKey= (RSAPublicKey) keyPair.getPublic();
+        }
     }
 
     /**
