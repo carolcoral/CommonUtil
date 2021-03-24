@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52b7c556-aac6-402c-b840-5f2564f1f5d7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/site/cnkj/common/config/MongoClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+    <list default="true" id="52b7c556-aac6-402c-b840-5f2564f1f5d7" name="Default" comment="change MongoClientInit and fix some bug.">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/1/1195786afcb95315b3ec156ea91e7166c2c2cf10" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14399913ca07717830f9b08ee87644884fc2959a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/5/157e0e9285b69e300624f35e79300c0ed6098936" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/7/1759e0760a24aae1fd0b2b5d7d8622112c621b0e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/9/19affac2f7e5749f37c36532ef281eec1befbd05" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c4b500508bae883bea47d0637c267e8c57d7580" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/21fd7f9a07ee140f9ce9ae11bbe161bdd456cbc8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2b5e0787fcb106c7e2c215b9201949810fe97d18" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/416390ba57649e9f4e6365934e9a6827cca3ffed" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/490c965ee8a02ce158895987485283bb4b666ab6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a24c23f6158d7abc5657040e232691adcee44ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4ffd3a6de814df96de78c74e6c16f964b4fe9a03" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/644b718a1d63acca44c411c399624e16ce98e11c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/65fb0f3f093182fd2ca42f4eb1116d36adc8a868" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6b5bb34dca0a1a09968bad0dc5ab4ad5434df80e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/74438aca9f4a48488fe204b00a7429cabb247abb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/7/776a6d7b367518db3108c641270f9c6311fa1150" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80bf55a45d89443866509f377d2b4f56db7fda1b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/82864735cd8af377e6ad061ae189505a1e3e9d7c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/899c5b5653c6a42950622470eb34ab3cd5851009" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f5f569cdcb2cd35235adfef521ccd334b295f84" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a43b6e3feeba3336586237a758acfa97b791be5b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/2/b28def072d697c755d8047d7c4fc36e92d284e43" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bb173f9557479135e0f1bcd9c6c5f7b4ae5f77e8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/c/bc46480ac8ea27c54208391c0607483f70591f52" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/1/c131e8dffaaace66f248f9071023b60be7b277a4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/d/cd089ae45ce870c45e434019e8f1ed4f066cd425" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df021943680d67b4f49e98599f4bb0e86803c590" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e00232faab93cb27b9940f780c75123903d70b1c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7ba402f75a71f1f452cbf16986ed26aa0c6f1b5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/eaa75651d9d6785c2bd75843529d61a722450af5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/eaaa4be2d68e0a2d603579b394cb7c0ee6bb6df5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fc37a8cb3cd4e86789b6dcadf3271e6894269266" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fdadf7a612307c5bb8e90739949b439a1891d886" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/data/MongoClientsInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/data/MongoClientsInit.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,9 +65,9 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="120">
-                <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="460">
+                <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
               </first_editor>
               <second_editor />
             </state>
@@ -423,7 +452,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="tasks.servers" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -582,7 +611,7 @@
       <workItem from="1615280802811" duration="2696000" />
       <workItem from="1615862401748" duration="5071000" />
       <workItem from="1616492699296" duration="2945000" />
-      <workItem from="1616556037817" duration="2757000" />
+      <workItem from="1616556037817" duration="4640000" />
     </task>
     <task id="LOCAL-00001" summary="repair some lombok questions">
       <created>1574320188766</created>
@@ -773,14 +802,22 @@
       <option name="project" value="LOCAL" />
       <updated>1616493647106</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="change MongoClientInit and fix some bug.">
+      <created>1616568687426</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1616568687426</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97577000" />
+    <option name="totallyTimeSpent" value="99460000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="RestServices" order="4" />
@@ -796,15 +833,16 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991276" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3293348" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32606325" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3642312" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32606325" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3642312" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3293348" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20842217" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20842217" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="bottom" id="SonarLint" order="7" weight="0.3293348" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -813,7 +851,6 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3293348" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -908,7 +945,8 @@
     <MESSAGE value="new class for multi mongo-client" />
     <MESSAGE value="change folder and fix some bug" />
     <MESSAGE value="change data folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="change data folder" />
+    <MESSAGE value="change MongoClientInit and fix some bug." />
+    <option name="LAST_COMMIT_MESSAGE" value="change MongoClientInit and fix some bug." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1210,9 +1248,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="120">
-            <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="460">
+            <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
           </first_editor>
           <second_editor />
         </state>
