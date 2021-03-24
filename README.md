@@ -3,7 +3,14 @@
 
 ## [WIKI](https://github.com/carolcoral/CommonUtil/wiki)
 
+## Download
+* [CommonUtil.jar](https://github.com/carolcoral/CommonUtil/releases/download/2.0.2/CommonUtil-2.0.2.jar)
+* [CommonUtil-javadoc.jar](https://github.com/carolcoral/CommonUtil/releases/download/2.0.2/CommonUtil-2.0.2-javadoc.jar)
+* [CommonUtil-sources.jar](https://github.com/carolcoral/CommonUtil/releases/download/2.0.2/CommonUtil-2.0.2-sources.jar)
+
 ## Log
+> `2021年3月24日 11:24:53` fix some bugs and change mongoClient init. [Use MongoClientInit](https://github.com/carolcoral/CommonUtil/wiki/MongoClientInit).
+
 > `2021年2月9日 11:09:13` change folder and fix some bug.
 
 > `2020年8月20日 16:49:23` new class [MongoClientsInit](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/MongoClientsInit.java) for create muti mongoClient.More info to see [How to use MongoClientsInit](https://carolcoral.github.io/Article/JAVA/Java%E6%9E%84%E5%BB%BA%E5%A4%9Amongo%E6%95%B0%E6%8D%AE%E6%BA%90%E5%AE%A2%E6%88%B7%E7%AB%AF)
@@ -65,6 +72,6 @@ mvn install:install-file -Dfile=/User/carol/Desktop/CommonUtil-1.0.jar -DgroupId
 <dependency>
     <groupId>site.cnkj</groupId>
     <artifactId>CommonUtil</artifactId>
-    <version>1.0</version>
+    <version>2.0.2</version>
 </dependency>
 ```
