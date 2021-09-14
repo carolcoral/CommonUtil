@@ -633,7 +633,7 @@ public final class DateUtil {
      * @return 月份区间集合
      * @throws Exception e
      */
-    public static List<String> computerMonth(String startMonth, String endMonth, String inputFormat, String outputFormat) throws Exception{
+    public static List<String> computerMonth(String startMonth, String endMonth, String inputFormat, String outputFormat) {
         List<String> months = new ArrayList<>();
         try {
             Long startTimestamp = translateDateToTimestamp(startMonth, inputFormat);
