@@ -12,96 +12,49 @@ import java.util.*;
  */
 public final class DateUtil {
 
-     public enum FORMAT_ENUM{
-        BASETIME_yyyy("yyyy"),BASETIME_MM("MM"),BASETIME_dd("dd"),BASETIME_HH("HH"),BASETIME_mm("mm"),BASETIME_ss("ss"), BASETIME_SSS("SSS"),
-        FULLTIMEBY_yMd("yyyy-MM-dd"),FULLTIMEBY_yMdH("yyyy-MM-dd HH"),FULLTIMEBY_yMdHm("yyyy-MM-dd HH:mm"),
-        FULLTIMEBY_yM("yyyy-MM"),FULLTIMEBY_Md("MM-dd"),FULLTIMEBY_Hms("HH:mm:ss"),FULLTIMEBY_Hm("HH:mm"),FULLTIMEBY_ms("mm:ss"),
-        FULLTIMEBY_HmsS("HH:mm:ss.SSS"),NOSEGMENTATION_yM("yyyyMM"),NOSEGMENTATION_yMd("yyyyMMdd"),NOSEGMENTATION_Hm("HHmm"),
-        NOSEGMENTATION_Hms("HHmmss"),NOSEGMENTATION_HmsS("HHmmssSSS"),NOSEGMENTATION_yMdHm("yyyyMMddHHmm"),NOSEGMENTATION_yMdHms("yyyyMMddHHmmss"),
-        NOSEGMENTATION_yMdHmsS("yyyyMMddHHmmssSSS"),POINT_yMd("yyyy.MM.dd"),POINT_Hms("HH.mm.ss"),FULLTIMEBY_yMdHms("yyyy-MM-dd HH:mm:ss"),
-        FULLTIMEBY_yMdHmsS("yyyy-MM-dd HH:mm:ss.SSS"),FULLTIMEFORMAT_yMd("yyyy年MM月dd日"),FULLTIMEFORMAT_Hms("HH时mm分ss秒"),
-        FULLTIMEFORMAT_yMdHms("yyyy年MM月dd日 HH时mm分ss秒"),FULLTIMEFORMAT_yMdHmsS("yyyy年MM月dd日 HH时mm分ss秒SSS毫秒");
+    public enum FORMAT_ENUM{
+        BASETIME_yyyy("yyyy"),
+        BASETIME_MM("MM"),
+        BASETIME_dd("dd"),
+        BASETIME_HH("HH"),
+        BASETIME_mm("mm"),
+        BASETIME_ss("ss"),
+        BASETIME_SSS("SSS"),
+        FULLTIMEBY_yMd("yyyy-MM-dd"),
+        FULLTIMEBY_yMdH("yyyy-MM-dd HH"),
+        FULLTIMEBY_yMdHm("yyyy-MM-dd HH:mm"),
+        FULLTIMEBY_yM("yyyy-MM"),
+        FULLTIMEBY_Md("MM-dd"),
+        FULLTIMEBY_Hms("HH:mm:ss"),
+        FULLTIMEBY_Hm("HH:mm"),
+        FULLTIMEBY_ms("mm:ss"),
+        FULLTIMEBY_HmsS("HH:mm:ss.SSS"),
+        NOSEGMENTATION_yM("yyyyMM"),
+        NOSEGMENTATION_yMd("yyyyMMdd"),
+        NOSEGMENTATION_Hm("HHmm"),
+        NOSEGMENTATION_Hms("HHmmss"),
+        NOSEGMENTATION_HmsS("HHmmssSSS"),
+        NOSEGMENTATION_yMdHm("yyyyMMddHHmm"),
+        NOSEGMENTATION_yMdHms("yyyyMMddHHmmss"),
+        NOSEGMENTATION_yMdHmsS("yyyyMMddHHmmssSSS"),
+        POINT_yMd("yyyy.MM.dd"),
+        POINT_Hms("HH.mm.ss"),
+        FULLTIMEBY_yMdHms("yyyy-MM-dd HH:mm:ss"),
+        FULLTIMEBY_yMdHmsS("yyyy-MM-dd HH:mm:ss.SSS"),
+        FULLTIMEFORMAT_yMd("yyyy年MM月dd日"),
+        FULLTIMEFORMAT_Hms("HH时mm分ss秒"),
+        FULLTIMEFORMAT_yMdHms("yyyy年MM月dd日 HH时mm分ss秒"),
+        FULLTIMEFORMAT_yMdHmsS("yyyy年MM月dd日 HH时mm分ss秒SSS毫秒");
 
-        private FORMAT_ENUM(String value) {
+        FORMAT_ENUM(String value) {
             this.value = value;
         }
 
-        private String value;
+        private final String value;
 
         public String getValue(){
             return value;
         }
-    }
-
-    /**
-     * @Deprecated use enum FORMAT_ENUM
-     */
-    @Deprecated
-    public static class FORMAT{
-        //基本单位 年
-        public static final String BASETIME_yyyy = "yyyy";
-        //基本单位 月
-        public static final String BASETIME_MM = "MM";
-        //基本单位 日
-        public static final String BASETIME_dd = "dd";
-        //基本单位 时
-        public static final String BASETIME_HH = "HH";
-        //基本单位 分
-        public static final String BASETIME_mm = "mm";
-        //基本单位 秒
-        public static final String BASETIME_ss = "ss";
-        //基本单位 毫秒
-        public static final String BASETIME_SSS = "SSS";
-        //年-月-日
-        public static final String FULLTIMEBY_yMd = "yyyy-MM-dd";
-        //年-月-日 时
-        public static final String FULLTIMEBY_yMdH = "yyyy-MM-dd HH";
-        //年-月-日 时:分
-        public static final String FULLTIMEBY_yMdHm = "yyyy-MM-dd HH:mm";
-        //年-月
-        public static final String FULLTIMEBY_yM = "yyyy-MM";
-        //月-日
-        public static final String FULLTIMEBY_Md = "MM-dd";
-        //时:分:秒
-        public static final String FULLTIMEBY_Hms = "HH:mm:ss";
-        //时:分
-        public static final String FULLTIMEBY_Hm = "HH:mm";
-        //分:秒
-        public static final String FULLTIMEBY_ms = "mm:ss";
-        //时:分:秒.毫秒
-        public static final String FULLTIMEBY_HmsS = "HH:mm:ss.SSS";
-        //年月 无分割
-        public static final String NOSEGMENTATION_yM = "yyyyMM";
-        //年月日 无分割
-        public static final String NOSEGMENTATION_yMd = "yyyyMMdd";
-        //时分 无分割
-        public static final String NOSEGMENTATION_Hm = "HHmm";
-        //时分秒 无分割
-        public static final String NOSEGMENTATION_Hms = "HHmmss";
-        //时分秒毫秒 无分割
-        public static final String NOSEGMENTATION_HmsS = "HHmmssSSS";
-        //年月日时分 无分割
-        public static final String NOSEGMENTATION_yMdHm = "yyyyMMddHHmm";
-        //年月日时分秒 无分割
-        public static final String NOSEGMENTATION_yMdHms = "yyyyMMddHHmmss";
-        //年月日时分秒毫秒 无分割
-        public static final String NOSEGMENTATION_yMdHmsS = "yyyyMMddHHmmssSSS";
-        //年月日 点分割
-        public static final String POINT_yMd = "yyyy.MM.dd";
-        //时分秒 点分割
-        public static final String POINT_Hms = "HH.mm.ss";
-        //年-月-日 时:分:秒
-        public static final String FULLTIMEBY_yMdHms = "yyyy-MM-dd HH:mm:ss";
-        //年-月-日 时:分:秒.毫秒
-        public static final String FULLTIMEBY_yMdHmsS = "yyyy-MM-dd HH:mm:ss.SSS";
-        //格式化 年-月-日
-        public static final String FULLTIMEFORMAT_yMd = "yyyy年MM月dd日";
-        //格式化 时:分:秒
-        public static final String FULLTIMEFORMAT_Hms = "HH时mm分ss秒";
-        //格式化 年-月-日 时:分:秒
-        public static final String FULLTIMEFORMAT_yMdHms = "yyyy年MM月dd日 HH时mm分ss秒";
-        //格式化 年-月-日 时:分:秒.毫秒
-        public static final String FULLTIMEFORMAT_yMdHmsS = "yyyy年MM月dd日 HH时mm分ss秒SSS毫秒";
     }
 
     /**
@@ -162,6 +115,7 @@ public final class DateUtil {
      */
     public static long getLastDaysTimestamp(int maxDays){
         Calendar calendar = Calendar.getInstance();
+        calendar.clear();
         calendar.setTime(new Date());
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
@@ -456,7 +410,7 @@ public final class DateUtil {
                         date.substring(12, 14);
             }else if (date.length() == 13){
                 //1560390240760
-                time = DateUtil.translateTimeToDate(Long.valueOf(date), format);
+                time = translateTimeToDate(Long.valueOf(date), format);
             }
             return time;
         } catch (NumberFormatException e) {
@@ -510,8 +464,8 @@ public final class DateUtil {
                 date_format.contains("mm") &&
                 date_format.contains("ss")){
             //秒
-            long real_time = current_time + parseInt * 1000;
-            translateTimeToDate = DateUtil.translateTimeToDate(real_time, date_format);
+            long real_time = current_time + parseInt * 1000L;
+            translateTimeToDate = translateTimeToDate(real_time, date_format);
         }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
                 date_format.contains("MM") &&
                 date_format.contains("dd") &&
@@ -519,8 +473,8 @@ public final class DateUtil {
                 date_format.contains("mm") &&
                 !date_format.contains("ss")){
             //分钟
-            long real_time = current_time + parseInt * 60 * 1000;
-            translateTimeToDate = DateUtil.translateTimeToDate(real_time, date_format);
+            long real_time = current_time + (long) parseInt * 60 * 1000;
+            translateTimeToDate = translateTimeToDate(real_time, date_format);
         }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
                 date_format.contains("MM") &&
                 date_format.contains("dd") &&
@@ -528,8 +482,8 @@ public final class DateUtil {
                 !date_format.contains("mm") &&
                 !date_format.contains("ss")){
             //小时
-            long real_time = current_time + parseInt * 60 * 60 * 1000;
-            translateTimeToDate = DateUtil.translateTimeToDate(real_time, date_format);
+            long real_time = current_time + (long) parseInt * 60 * 60 * 1000;
+            translateTimeToDate = translateTimeToDate(real_time, date_format);
         }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
                 date_format.contains("MM") &&
                 date_format.contains("dd") &&
@@ -537,8 +491,8 @@ public final class DateUtil {
                 !date_format.contains("mm") &&
                 !date_format.contains("ss")){
             //天
-            long real_time = current_time + parseInt * 24 * 60 * 60 * 1000;
-            translateTimeToDate = DateUtil.translateTimeToDate(real_time, date_format);
+            long real_time = current_time + (long) parseInt * 24 * 60 * 60 * 1000;
+            translateTimeToDate = translateTimeToDate(real_time, date_format);
         }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
                 date_format.contains("MM") &&
                 !date_format.contains("dd") &&
@@ -546,7 +500,7 @@ public final class DateUtil {
                 !date_format.contains("mm") &&
                 !date_format.contains("ss")){
             //月
-            String toDate = DateUtil.translateTimeToDate(current_time, FORMAT_ENUM.FULLTIMEBY_yM.getValue());
+            String toDate = translateTimeToDate(current_time, FORMAT_ENUM.FULLTIMEBY_yM.getValue());
             Integer year = Integer.valueOf(toDate.split("-")[0]);
             Integer month = Integer.valueOf(toDate.split("-")[1]);
             int shang = parseInt / 12;
@@ -561,8 +515,8 @@ public final class DateUtil {
                 month = month - 12;
             }
             String i5 = month<10?"0"+String.valueOf(month):String.valueOf(month);
-            Long translateDateToTimestamp = DateUtil.translateDateToTimestamp(String.valueOf(year) + "-" + i5, FORMAT_ENUM.FULLTIMEBY_yM.getValue());
-            translateTimeToDate = DateUtil.translateTimeToDate(translateDateToTimestamp, date_format);
+            Long translateDateToTimestamp = translateDateToTimestamp(String.valueOf(year) + "-" + i5, FORMAT_ENUM.FULLTIMEBY_yM.getValue());
+            translateTimeToDate = translateTimeToDate(translateDateToTimestamp, date_format);
         }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
                 !date_format.contains("MM") &&
                 !date_format.contains("dd") &&
@@ -570,12 +524,12 @@ public final class DateUtil {
                 !date_format.contains("mm") &&
                 !date_format.contains("ss")){
             //年
-            String year = DateUtil.translateTimeToDate(current_time, FORMAT_ENUM.BASETIME_yyyy.getValue());
+            String year = translateTimeToDate(current_time, FORMAT_ENUM.BASETIME_yyyy.getValue());
             String value = String.valueOf(Integer.valueOf(year) + parseInt);
-            Long aLong = DateUtil.translateDateToTimestamp(value, FORMAT_ENUM.BASETIME_yyyy.getValue());
-            translateTimeToDate = DateUtil.translateTimeToDate(aLong, date_format);
+            Long aLong = translateDateToTimestamp(value, FORMAT_ENUM.BASETIME_yyyy.getValue());
+            translateTimeToDate = translateTimeToDate(aLong, date_format);
         }else {
-            translateTimeToDate = DateUtil.translateTimeToDate(current_time, date_format);
+            translateTimeToDate = translateTimeToDate(current_time, date_format);
         }
         return translateTimeToDate;
     }
@@ -602,9 +556,27 @@ public final class DateUtil {
     public static String getFirstDayByMonth(int month, String format){
         //获取当前月第一天：
         Calendar c = Calendar.getInstance();
-        c.add(Calendar.MONTH, month);
+        c.clear();
+        c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, 1);//设置为1号,当前日期既为本月第一天
-        return DateUtil.translateDateToString(c.getTime(), format);
+        return translateDateToString(c.getTime(), format);
+    }
+
+    /**
+     * 获取指定月份的第一天的当前时间
+     * @param year 指定年
+     * @param month 指定月（1 当前月加1）
+     * @param format 转换后时间格式
+     * @return 转换后的时间
+     */
+    public static String getFirstDayByMonth(int year, int month, String format){
+        //获取当前月最后一天
+        Calendar c = Calendar.getInstance();
+        c.clear();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, 1);
+        return translateDateToString(c.getTime(), format);
     }
 
     /**
@@ -616,9 +588,10 @@ public final class DateUtil {
     public static String getLastDayByMonth(int month, String format){
         //获取当前月最后一天
         Calendar c = Calendar.getInstance();
-        c.add(Calendar.MONTH, month);
+        c.clear();
+        c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH));
-        return DateUtil.translateDateToString(c.getTime(), format);
+        return translateDateToString(c.getTime(), format);
     }
 
     /**
@@ -635,18 +608,60 @@ public final class DateUtil {
      */
     public static List<JSONObject> getAroundTimeList(String startTime, String endTime, int cut){
         List<JSONObject> times = new LinkedList<>();
-        Long startTimestamp = DateUtil.translateDateToTimestamp(startTime, FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue())/1000;
-        Long endTimestamp = DateUtil.translateDateToTimestamp(endTime, FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue())/1000;
-        List<String> list = DateUtil.splitTimestamp(cut, startTimestamp, endTimestamp);
+        Long startTimestamp = translateDateToTimestamp(startTime, FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue())/1000;
+        Long endTimestamp = translateDateToTimestamp(endTime, FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue())/1000;
+        List<String> list = splitTimestamp(cut, startTimestamp, endTimestamp);
         for (String s : list) {
             String[] split = s.split(",");
-            Date start_time = DateUtil.translateTimestampToDate(Long.valueOf(split[0]), FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
-            Date end_time = DateUtil.translateTimestampToDate(Long.valueOf(split[1]), FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
+            Date start_time = translateTimestampToDate(Long.valueOf(split[0]), FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
+            Date end_time = translateTimestampToDate(Long.valueOf(split[1]), FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("startTime", start_time);
             jsonObject.put("endTime", end_time);
             times.add(jsonObject);
         }
         return times;
+    }
+
+    /**
+     * 计算月份区间
+     *
+     * @param startMonth 起始月
+     * @param endMonth 结束月
+     * @param inputFormat 输入日期格式
+     * @param outputFormat 输出日期格式
+     * @return 月份区间集合
+     * @throws Exception e
+     */
+    public static List<String> computerMonth(String startMonth, String endMonth, String inputFormat, String outputFormat) throws Exception{
+        List<String> months = new ArrayList<>();
+        try {
+            Long startTimestamp = translateDateToTimestamp(startMonth, inputFormat);
+            Calendar startDate = Calendar.getInstance();
+            startDate.setTimeInMillis(startTimestamp);
+            int year = startDate.get(Calendar.YEAR);
+            int month = startDate.get(Calendar.MONTH) + 1;
+            Long endTimestamp = translateDateToTimestamp(endMonth, inputFormat);
+            long currentTimestamp = 0L;
+            Calendar calendar = Calendar.getInstance();
+            calendar.clear();
+            while (true){
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month - 1);
+                currentTimestamp = calendar.getTimeInMillis();
+                if (currentTimestamp > endTimestamp){
+                    break;
+                }
+                months.add(translateTimeToDate(currentTimestamp, outputFormat));
+                month = month + 1;
+                if (month > 12){
+                    year = year + 1;
+                    month = 1;
+                }
+            }
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        return months;
     }
 }
