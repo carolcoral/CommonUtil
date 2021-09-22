@@ -12,7 +12,7 @@ import java.util.*;
  */
 public final class DateUtil {
 
-    public enum FORMAT_ENUM{
+    public static enum FORMAT_ENUM{
         BASETIME_yyyy("yyyy"),
         BASETIME_MM("MM"),
         BASETIME_dd("dd"),
