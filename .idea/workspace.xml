@@ -5,30 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ab3ef3f-5475-495f-a0ee-8551c01ff741" name="Changes" comment="change MongoClientInit and fix some bug.">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/1/1195786afcb95315b3ec156ea91e7166c2c2cf10" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14399913ca07717830f9b08ee87644884fc2959a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14399913ca07717830f9b08ee87644884fc2959a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/5/157e0e9285b69e300624f35e79300c0ed6098936" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/7/1759e0760a24aae1fd0b2b5d7d8622112c621b0e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/7/1759e0760a24aae1fd0b2b5d7d8622112c621b0e" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c4b500508bae883bea47d0637c267e8c57d7580" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c4b500508bae883bea47d0637c267e8c57d7580" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/21fd7f9a07ee140f9ce9ae11bbe161bdd456cbc8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/21fd7f9a07ee140f9ce9ae11bbe161bdd456cbc8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/490c965ee8a02ce158895987485283bb4b666ab6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/490c965ee8a02ce158895987485283bb4b666ab6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4ffd3a6de814df96de78c74e6c16f964b4fe9a03" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4ffd3a6de814df96de78c74e6c16f964b4fe9a03" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/644b718a1d63acca44c411c399624e16ce98e11c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/644b718a1d63acca44c411c399624e16ce98e11c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6b5bb34dca0a1a09968bad0dc5ab4ad5434df80e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6b5bb34dca0a1a09968bad0dc5ab4ad5434df80e" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/74438aca9f4a48488fe204b00a7429cabb247abb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/899c5b5653c6a42950622470eb34ab3cd5851009" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/899c5b5653c6a42950622470eb34ab3cd5851009" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a43b6e3feeba3336586237a758acfa97b791be5b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a43b6e3feeba3336586237a758acfa97b791be5b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df021943680d67b4f49e98599f4bb0e86803c590" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df021943680d67b4f49e98599f4bb0e86803c590" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e00232faab93cb27b9940f780c75123903d70b1c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e00232faab93cb27b9940f780c75123903d70b1c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7ba402f75a71f1f452cbf16986ed26aa0c6f1b5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7ba402f75a71f1f452cbf16986ed26aa0c6f1b5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fdadf7a612307c5bb8e90739949b439a1891d886" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fdadf7a612307c5bb8e90739949b439a1891d886" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/data/KafkaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/data/KafkaUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/date/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/date/DateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/system/GracefulShutdown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/system/GracefulShutdown.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -566,7 +543,7 @@
       <workItem from="1630984333922" duration="7500000" />
       <workItem from="1631697111147" duration="3971000" />
       <workItem from="1632885910059" duration="1347000" />
-      <workItem from="1632966379808" duration="4778000" />
+      <workItem from="1632966379808" duration="5078000" />
     </task>
     <task id="LOCAL-00001" summary="repair some lombok questions">
       <created>1574320188766</created>
