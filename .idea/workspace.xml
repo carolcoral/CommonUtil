@@ -4,14 +4,31 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ab3ef3f-5475-495f-a0ee-8551c01ff741" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/82864735cd8af377e6ad061ae189505a1e3e9d7c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/eaa75651d9d6785c2bd75843529d61a722450af5" beforeDir="false" />
+    <list default="true" id="8ab3ef3f-5475-495f-a0ee-8551c01ff741" name="Changes" comment="change MongoClientInit and fix some bug.">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/1/1195786afcb95315b3ec156ea91e7166c2c2cf10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14399913ca07717830f9b08ee87644884fc2959a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14399913ca07717830f9b08ee87644884fc2959a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/5/157e0e9285b69e300624f35e79300c0ed6098936" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/7/1759e0760a24aae1fd0b2b5d7d8622112c621b0e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/7/1759e0760a24aae1fd0b2b5d7d8622112c621b0e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c4b500508bae883bea47d0637c267e8c57d7580" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c4b500508bae883bea47d0637c267e8c57d7580" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/21fd7f9a07ee140f9ce9ae11bbe161bdd456cbc8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/21fd7f9a07ee140f9ce9ae11bbe161bdd456cbc8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/490c965ee8a02ce158895987485283bb4b666ab6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/490c965ee8a02ce158895987485283bb4b666ab6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4ffd3a6de814df96de78c74e6c16f964b4fe9a03" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4ffd3a6de814df96de78c74e6c16f964b4fe9a03" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/644b718a1d63acca44c411c399624e16ce98e11c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/4/644b718a1d63acca44c411c399624e16ce98e11c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6b5bb34dca0a1a09968bad0dc5ab4ad5434df80e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6b5bb34dca0a1a09968bad0dc5ab4ad5434df80e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/74438aca9f4a48488fe204b00a7429cabb247abb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/899c5b5653c6a42950622470eb34ab3cd5851009" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/899c5b5653c6a42950622470eb34ab3cd5851009" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a43b6e3feeba3336586237a758acfa97b791be5b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a43b6e3feeba3336586237a758acfa97b791be5b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df021943680d67b4f49e98599f4bb0e86803c590" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/df021943680d67b4f49e98599f4bb0e86803c590" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e00232faab93cb27b9940f780c75123903d70b1c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e00232faab93cb27b9940f780c75123903d70b1c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7ba402f75a71f1f452cbf16986ed26aa0c6f1b5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7ba402f75a71f1f452cbf16986ed26aa0c6f1b5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fdadf7a612307c5bb8e90739949b439a1891d886" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fdadf7a612307c5bb8e90739949b439a1891d886" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/io/RSAEncrypt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/io/RSAEncrypt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/data/KafkaUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/data/KafkaUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/date/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/date/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/system/GracefulShutdown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/site/cnkj/common/utils/system/GracefulShutdown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -370,11 +387,13 @@
     <property name="LombokPluginIS_LOMBOK_VERSION_CHECK_Enabled" value="false" />
     <property name="LombokPluginIS_MISSING_LOMBOK_CHECK_Enabled" value="true" />
     <property name="LombokPluginIS_VAL_Enabled" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../csgl/hettrmsservice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -403,7 +422,7 @@
       <recent name="F:\CommonUtil\repository\site\cnkj\CommonUtil" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CommonApplicationTests">
+  <component name="RunManager" selected="Application.DateUtil">
     <configuration name="CommonApplicationTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="site.cnkj.utils.CommonApplicationTests" />
       <module name="CommonUtil" />
@@ -411,6 +430,20 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="site.cnkj.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DateUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="site.cnkj.common.utils.date.DateUtil" />
+      <module name="CommonUtil" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="site.cnkj.common.utils.date.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -487,9 +520,11 @@
       <item itemvalue="Application.HttpCommonUtil" />
       <item itemvalue="Application.KafkaUtil" />
       <item itemvalue="Application.SSH2Util" />
+      <item itemvalue="Application.DateUtil" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DateUtil" />
         <item itemvalue="Application.SSH2Util" />
         <item itemvalue="Application.KafkaUtil" />
         <item itemvalue="Application.HttpCommonUtil" />
@@ -503,7 +538,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="52b7c556-aac6-402c-b840-5f2564f1f5d7" name="Default" comment="" />
+      <changelist id="8ab3ef3f-5475-495f-a0ee-8551c01ff741" name="Changes" comment="change MongoClientInit and fix some bug." />
       <created>1574318981558</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -528,6 +563,10 @@
       <workItem from="1615862401748" duration="5071000" />
       <workItem from="1616492699296" duration="2945000" />
       <workItem from="1616556037817" duration="4640000" />
+      <workItem from="1630984333922" duration="7500000" />
+      <workItem from="1631697111147" duration="3971000" />
+      <workItem from="1632885910059" duration="1347000" />
+      <workItem from="1632966379808" duration="4778000" />
     </task>
     <task id="LOCAL-00001" summary="repair some lombok questions">
       <created>1574320188766</created>
@@ -809,7 +848,18 @@
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

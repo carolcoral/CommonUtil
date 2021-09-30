@@ -1,0 +1,21 @@
+
+Q
+java:S3740"/Provide the parametrized type for this generic.(β‹ ­ύÿÿÿÿ8ε€όρ»/
+Q
+java:S3740"/Provide the parametrized type for this generic.(β‹ ­ύÿÿÿÿ8η€όρ»/
+L
+java:S3740"/Provide the parametrized type for this generic.(όϋ½Ϋ8η€όρ»/
+L
+java:S3740"/Provide the parametrized type for this generic.(όϋ½Ϋ8η€όρ»/
+Q
+java:S3740#"/Provide the parametrized type for this generic.(Άλ‡ώÿÿÿÿ8θ€όρ»/
+p	java:S116"ORename this field "NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(γΒΐΠύÿÿÿÿ8ι€όρ»/
+o	java:S116"NRename this field "PID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ΠϊΦ¶ώÿÿÿÿ8ι€όρ»/
+r	java:S116"QRename this field "TOPICS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(β‹ ­ύÿÿÿÿ8ι€όρ»/
+k	java:S116"ORename this field "INFO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(όϋ½Ϋ8ι€όρ»/
+h
+java:S3252H"FUse static access with "com.alibaba.fastjson.JSON" for "toJSONString".(―ΆΦψÿÿÿÿ8―όρ»/
+”
+java:S1319#"rThe type of the "customInfo" object should be an interface such as "Map" rather than the implementation "HashMap".(Άλ‡ώÿÿÿÿ8°όρ»/
+`
+java:S1155,">Use isEmpty() to check whether the collection is empty or not.(χΕΫϋÿÿÿÿ8±όρ»/

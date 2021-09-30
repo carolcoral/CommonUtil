@@ -631,37 +631,61 @@ public final class DateUtil {
      * @param inputFormat 输入日期格式
      * @param outputFormat 输出日期格式
      * @return 月份区间集合
-     * @throws Exception e
      */
     public static List<String> computerMonth(String startMonth, String endMonth, String inputFormat, String outputFormat) {
         List<String> months = new ArrayList<>();
-        try {
-            Long startTimestamp = translateDateToTimestamp(startMonth, inputFormat);
-            Calendar startDate = Calendar.getInstance();
-            startDate.setTimeInMillis(startTimestamp);
-            int year = startDate.get(Calendar.YEAR);
-            int month = startDate.get(Calendar.MONTH) + 1;
-            Long endTimestamp = translateDateToTimestamp(endMonth, inputFormat);
-            long currentTimestamp = 0L;
-            Calendar calendar = Calendar.getInstance();
-            calendar.clear();
-            while (true){
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month - 1);
-                currentTimestamp = calendar.getTimeInMillis();
-                if (currentTimestamp > endTimestamp){
-                    break;
-                }
-                months.add(translateTimeToDate(currentTimestamp, outputFormat));
-                month = month + 1;
-                if (month > 12){
-                    year = year + 1;
-                    month = 1;
-                }
+        Long startTimestamp = translateDateToTimestamp(startMonth, inputFormat);
+        Long endTimestamp = translateDateToTimestamp(endMonth, inputFormat);
+        if (null == startTimestamp || null == endTimestamp){
+            throw  new NullPointerException("one of startMonth or endMonth parsed resulr is null.");
+        }
+        Calendar startDate = Calendar.getInstance();
+        startDate.setTimeInMillis(startTimestamp);
+        int year = startDate.get(Calendar.YEAR);
+        int month = startDate.get(Calendar.MONTH) + 1;
+        long currentTimestamp;
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        while (true){
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month - 1);
+            currentTimestamp = calendar.getTimeInMillis();
+            if (currentTimestamp > endTimestamp){
+                break;
             }
-        }catch (NullPointerException e){
-            e.printStackTrace();
+            months.add(translateTimeToDate(currentTimestamp, outputFormat));
+            month = month + 1;
+            if (month > 12){
+                year = year + 1;
+                month = 1;
+            }
         }
         return months;
     }
+
+    /**
+     * 计算两个日期之间的天数，不包含结束日期当天.
+     * 如果结束日期小于开始日期，则返回负数天数.
+     *
+     * @param startDay 开始日期
+     * @param endDay 结束日期
+     * @param format 日期格式，开始日期和结束日期格式必须保持一致
+     * @return 天数.
+     */
+    public static long computerDaysBetween(String startDay, String endDay, String format){
+        Long startTimestamp = translateDateToTimestamp(startDay, format);
+        Long endTimestamp = translateDateToTimestamp(endDay, format);
+        if (null != endTimestamp && null != startTimestamp){
+            long change = endTimestamp - startTimestamp;
+            return change / (3600 * 24 * 1000);
+        }
+        throw new NullPointerException("one of startDay or endDay is null.");
+    }
+
+    public static void main(String[] args) {
+        long l = computerDaysBetween("20210914", "20210915", FORMAT_ENUM.NOSEGMENTATION_yMd.value);
+        System.out.println(l);
+    }
+
+
 }

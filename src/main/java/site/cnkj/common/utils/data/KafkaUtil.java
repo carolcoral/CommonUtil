@@ -1,13 +1,26 @@
 package site.cnkj.common.utils.data;
 
 import com.alibaba.fastjson.JSONObject;
+import com.sun.corba.se.spi.orbutil.threadpool.NoSuchWorkQueueException;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.KafkaException;
 import org.apache.kafka.common.PartitionInfo;
 import org.apache.kafka.common.TopicPartition;
+import org.apache.kafka.common.errors.AuthorizationException;
+import org.apache.kafka.common.errors.IllegalSaslStateException;
+import org.apache.kafka.common.errors.OutOfOrderSequenceException;
+import org.apache.kafka.common.errors.ProducerFencedException;
 import site.cnkj.common.utils.http.HttpCommonUtil;
 import site.cnkj.common.utils.logger.LoggerUtil;
 
+import java.time.Duration;
 import java.util.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.stream.Collectors;
 
 /*
  * @version 1.0 created by LXW on 2019/11/20 10:20
@@ -19,6 +32,52 @@ public class KafkaUtil {
     private static final String KEY_DESERIALIZER = "key.deserializer";
     private static final String VALUE_DESERIALIZER = "value.deserializer";
     private static final String STRING_DESERIALIZER = "org.apache.kafka.common.serialization.StringDeserializer";
+
+    public static boolean producer(Map<String, Object> properties, Object source, String... topics){
+        KafkaProducer<Object, Object> producer = new KafkaProducer<>(properties);
+        try {
+            producer.beginTransaction();
+            for (String topic : topics) {
+                ProducerRecord record = new ProducerRecord(topic, source);
+                producer.send(record);
+            }
+            producer.commitTransaction();
+        } catch (ProducerFencedException | OutOfOrderSequenceException | AuthorizationException e) {
+            // We can't recover from these exceptions, so our only option is to close the producer and exit.
+            producer.close();
+        } catch (KafkaException e) {
+            // For all other exceptions, just abort the transaction and try again.
+            producer.abortTransaction();
+        }
+        producer.close();
+        return true;
+    }
+
+    public static void consumer(Map<String, Object> properties, Map<String, ? extends Queue<Object>> sources, long timeout, String... topics) {
+        List<String> collect = Arrays.stream(topics).collect(Collectors.toList());
+        for (String topic : collect) {
+            if (!sources.containsKey(topic)){
+                throw new NullPointerException("current topic is not exists.topic is: " + topic);
+            }
+        }
+        //构建消费者客户端
+        KafkaConsumer<String, Object> consumer = new KafkaConsumer<>(properties);
+        //填充消费监听topic
+        consumer.subscribe(collect);
+        while (true){
+            //消费数据
+            ConsumerRecords<String, Object> records = consumer.poll(Duration.ofMillis(timeout));
+            //数据放入队列中
+            for (ConsumerRecord<String, Object> record : records) {
+                String topic = record.topic();
+                Object value = record.value();
+                boolean offer = sources.get(topic).offer(value);
+                if (Boolean.FALSE.equals(offer)){
+                    throw new IllegalSaslStateException("current queue size is max.");
+                }
+            }
+        }
+    }
 
 
     /**

@@ -1,2 +1,77 @@
 
-¢squid:S1697­"~Either reverse the equality operator in the "propertiesPathPrefix" null test, or reverse the logical operator that follows it.(Ìš§¶şÿÿÿÿ8ûÛ…¦ø.
+c	java:S112˜"FDefine and throw a dedicated exception instead of using a generic one.(õü– 8‡ò»/
+h	java:S112ª"FDefine and throw a dedicated exception instead of using a generic one.(Öù¿çıÿÿÿÿ8‡ò»/
+Q
+java:S3740q"/Provide the parametrized type for this generic.(¿Ş·íûÿÿÿÿ8‘‡ò»/
+Q
+java:S3740r"/Provide the parametrized type for this generic.(¢Ù¬«ÿÿÿÿÿ8‘‡ò»/
+Q
+java:S3740r"/Provide the parametrized type for this generic.(¢Ù¬«ÿÿÿÿÿ8‘‡ò»/
+M
+java:S3740œ"/Provide the parametrized type for this generic.(‰÷şƒ8‘‡ò»/
+\
+java:S1118":Add a private constructor to hide the implicit public one.(‡ÛŸÚıÿÿÿÿ8—‡ò»/
+[
+java:S4719;"9Replace charset name argument with StandardCharsets.UTF_8(Øñ˜èÿÿÿÿÿ8¥‡ò»/
+V
+java:S4719J"9Replace charset name argument with StandardCharsets.UTF_8(¤öæ¹8©‡ò»/
+B
+java:S2129s" Remove this "String" constructor(‚õœ¥ıÿÿÿÿ8îˆò»/
+h
+java:S3252†"EUse static access with "com.alibaba.fastjson.JSON" for "parseObject".(˜²êÚùÿÿÿÿ8ñˆò»/
+O
+java:S1602‡",Remove useless curly braces around statement(üˆâİùÿÿÿÿ8õˆò»/
+u
+java:S3776—"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(şõ‘¹úÿÿÿÿ8ıˆò»/
+X
+java:S1133—"5Do not forget to remove this deprecated code someday.(şõ‘¹úÿÿÿÿ8şˆò»/
+K
+java:S1123—"(Add the missing @deprecated Javadoc tag.(şõ‘¹úÿÿÿÿ8ÿˆò»/
+C
+java:S2129˜" Remove this "String" constructor(ŒÅ¶ùÿÿÿÿ8„‰ò»/
+C
+java:S2129™" Remove this "String" constructor(€ãÈÚúÿÿÿÿ8…‰ò»/
+\
+java:S4719¢"9Replace charset name argument with StandardCharsets.UTF_8(Çòøûÿÿÿÿ8‰ò»/
+[	java:S106£"9Replace this use of System.out or System.err by a logger.(ñ—¸½úÿÿÿÿ8‰ò»/
+I
+java:S1075®"&Remove this hard-coded path-delimiter.(”ªŒ—ûÿÿÿÿ8“‰ò»/
+u
+java:S3776Ä"RRefactor this method to reduce its Cognitive Complexity from 49 to the 15 allowed.(ù§õ¡ıÿÿÿÿ8—‰ò»/
+X
+java:S1133Ä"5Do not forget to remove this deprecated code someday.(ù§õ¡ıÿÿÿÿ8š‰ò»/
+K
+java:S1123Ä"(Add the missing @deprecated Javadoc tag.(ù§õ¡ıÿÿÿÿ8›‰ò»/
+\
+java:S4719Ë"9Replace charset name argument with StandardCharsets.UTF_8(è«…üÿÿÿÿ8‰ò»/
+\
+java:S4719Ì"9Replace charset name argument with StandardCharsets.UTF_8(†šÙÃúÿÿÿÿ8‰ò»/
+W
+java:S4719Ü"9Replace charset name argument with StandardCharsets.UTF_8(š’‹€8 Œò»/
+W
+java:S4719İ"9Replace charset name argument with StandardCharsets.UTF_8(‘Â¶µ8ò»/
+d	java:S899"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ8Øò»/
+o
+java:S1192©"LDefine a constant instead of duplicating this literal ".properties" 4 times.(òÈÙ°úÿÿÿÿ8ãò»/
+h
+java:S1192;"FDefine a constant instead of duplicating this literal "UTF-8" 7 times.(Øñ˜èÿÿÿÿÿ8äò»/
+u
+java:S1192¤"WDefine a constant instead of duplicating this literal "spring.profiles.active" 5 times.(Áæ£ç8äò»/
+u
+java:S1192¡"WDefine a constant instead of duplicating this literal "application.properties" 3 times.(•Û˜8äò»/
+s	java:S117ª"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öù¿çıÿÿÿÿ8çò»/
+s	java:S117ª"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öù¿çıÿÿÿÿ8çò»/
+`
+java:S1155H">Use isEmpty() to check whether the collection is empty or not.(”È„œıÿÿÿÿ8çò»/
+\
+java:S4973©"9Use the "equals" method if value comparison was intended.(òÈÙ°úÿÿÿÿ8øò»/
+k
+java:S2095w"NUse try-with-resources or close this "LineNumberReader" in a "finally" clause.(è¹Öá8½›ò»/
+k
+java:S2095e"NUse try-with-resources or close this "LineNumberReader" in a "finally" clause.(è¹Öá8½›ò»/
+e
+java:S2095d"HUse try-with-resources or close this "FileReader" in a "finally" clause.(ı¸’8¾›ò»/
+e
+java:S2095v"HUse try-with-resources or close this "FileReader" in a "finally" clause.(ı¸’8¾›ò»/
+V
+java:S2589×"8Remove this expression which always evaluates to "false"(ô‘Œã8¿›ò»/

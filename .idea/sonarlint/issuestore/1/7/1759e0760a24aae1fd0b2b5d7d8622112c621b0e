@@ -1,0 +1,48 @@
+
+b	java:S1128"FDefine and throw a dedicated exception instead of using a generic one.(‚Ê‰Ü8á†‹ò»/
+c	java:S112†"FDefine and throw a dedicated exception instead of using a generic one.(…‘­£8â†‹ò»/
+L
+java:S3740"/Provide the parametrized type for this generic.(† òİ8â†‹ò»/
+L
+java:S3740"/Provide the parametrized type for this generic.(† òİ8ã†‹ò»/
+L
+java:S3740>"/Provide the parametrized type for this generic.(˜ø›ğ8ã†‹ò»/
+L
+java:S3740>"/Provide the parametrized type for this generic.(˜ø›ğ8ã†‹ò»/
+L
+java:S3740Y"/Provide the parametrized type for this generic.(”äş8ã†‹ò»/
+L
+java:S3740\"/Provide the parametrized type for this generic.(åİïÛ8ã†‹ò»/
+L
+java:S3740w"/Provide the parametrized type for this generic.(Áƒÿî8ã†‹ò»/
+R
+java:S3740ˆ"/Provide the parametrized type for this generic.(Œîòıüÿÿÿÿ8ä†‹ò»/
+M
+java:S3740’"/Provide the parametrized type for this generic.(† òİ8ä†‹ò»/
+M
+java:S3740’"/Provide the parametrized type for this generic.(† òİ8ä†‹ò»/
+R
+java:S3740“"/Provide the parametrized type for this generic.(úüçøÿÿÿÿ8ä†‹ò»/
+\
+java:S1118":Add a private constructor to hide the implicit public one.(†Æü‰ıÿÿÿÿ8é†‹ò»/
+o
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(ì—Çî8ê†‹ò»/
+Q
+java:S2864"4Iterate over the "entrySet" instead of the "keySet".(–«ˆ»8É‡‹ò»/
+o
+java:S37768"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(‚Ê‰Ü8è‡‹ò»/
+‰
+java:S11308"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(‚Ê‰Ü8é‡‹ò»/
+e
+java:S53619"HReplace this call to "replaceAll()" by a call to the "replace()" method.(ÃÇ„õ8½ˆ‹ò»/
+V
+java:S2864:"4Iterate over the "entrySet" instead of the "keySet".(Ä¨”¿úÿÿÿÿ8¾ˆ‹ò»/
+j
+java:S5361A"HReplace this call to "replaceAll()" by a call to the "replace()" method.(“÷üÿÿÿÿ8Áˆ‹ò»/
+j
+java:S5361K"HReplace this call to "replaceAll()" by a call to the "replace()" method.(§Ò©‹ıÿÿÿÿ8Åˆ‹ò»/
+]	java:S125a"<This block of commented-out lines of code should be removed.(×•÷¶ÿÿÿÿÿ8Óˆ‹ò»/
+p
+java:S3776†"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(…‘­£8Øˆ‹ò»/
+Š
+java:S1130†"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(…‘­£8Ùˆ‹ò»/

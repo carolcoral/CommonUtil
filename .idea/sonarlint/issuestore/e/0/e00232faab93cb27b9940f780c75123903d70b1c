@@ -1,0 +1,61 @@
+
+R
+java:S3740ê"/Provide the parametrized type for this generic.(øøË´ûÿÿÿÿ8åÙ€ò»/
+M
+java:S3740¹"/Provide the parametrized type for this generic.(İûå¿8åÙ€ò»/
+J
+java:S2447{"-Null is returned but a "Boolean" is expected.(¥¹ï8‹Ú€ò»/
+K
+java:S2447‹"-Null is returned but a "Boolean" is expected.(¥¹ï8†Ü€ò»/
+K
+java:S2447§"-Null is returned but a "Boolean" is expected.(¥¹ï8®ß€ò»/
+I
+java:S1168â"+Return an empty collection instead of null.(¥¹ï8¸ß€ò»/
+I
+java:S1168ó"+Return an empty collection instead of null.(¥¹ï8ºß€ò»/
+I
+java:S1168ä"+Return an empty collection instead of null.(¥¹ï8Éß€ò»/
+I
+java:S1168’"+Return an empty collection instead of null.(¥¹ï8¼å€ò»/
+I
+java:S1168£"+Return an empty collection instead of null.(¥¹ï8Çå€ò»/
+I
+java:S1168Ò"+Return an empty collection instead of null.(¥¹ï8‰æ€ò»/
+I
+java:S1168å"+Return an empty collection instead of null.(¥¹ï8™æ€ò»/
+v
+java:S2293ñ"YReplace the type specification in this constructor call with the diamond operator ("<>").(‰¥I8©æ€ò»/
+I
+java:S1168"+Return an empty collection instead of null.(¥¹ï8¹æ€ò»/
+v
+java:S2293Š"YReplace the type specification in this constructor call with the diamond operator ("<>").(‰¥I8Éæ€ò»/
+I
+java:S1168˜"+Return an empty collection instead of null.(¥¹ï8Ùæ€ò»/
+8
+java:S3457È"Not enough arguments.(ŒÀ×åùÿÿÿÿ8‰ç€ò»/
+8
+java:S3457ß"Not enough arguments.(´İğİùÿÿÿÿ8‘ç€ò»/
+
+java:S1319Ä"mThe return type of this method should be an interface such as "Set" rather than the implementation "HashSet".(®’ûÿÿÿÿ8™ç€ò»/
+‹
+java:S1319Ù"mThe return type of this method should be an interface such as "Set" rather than the implementation "HashSet".(ğ·•…8šç€ò»/
+H
+java:S5411ã"*Use the primitive boolean expression here.(‘¼«™8©ç€ò»/
+H
+java:S5411ö"*Use the primitive boolean expression here.(‘¼«™8Àç€ò»/
+H
+java:S5411‰"*Use the primitive boolean expression here.(‘¼«™8Àç€ò»/
+H
+java:S5411Ÿ"*Use the primitive boolean expression here.(Ÿ‡Ç8Áç€ò»/
+M
+java:S5411¸"*Use the primitive boolean expression here.(ıÍâµşÿÿÿÿ8Âç€ò»/
+p
+java:S2259."SA "NullPointerException" could be thrown; "getConnectionFactory()" can return null.(òùï‚8õì€ò»/
+q
+java:S2259É"SA "NullPointerException" could be thrown; "getConnectionFactory()" can return null.(§Õêø8şì€ò»/
+q
+java:S2259İ"SA "NullPointerException" could be thrown; "getConnectionFactory()" can return null.(§Õêø8ÿì€ò»/
+p
+java:S2259"SA "NullPointerException" could be thrown; "getConnectionFactory()" can return null.(¶È…½8ÿì€ò»/
+q
+java:S2259¥"SA "NullPointerException" could be thrown; "getConnectionFactory()" can return null.(ÃÖ§8€í€ò»/
