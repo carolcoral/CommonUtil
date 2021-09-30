@@ -12,7 +12,7 @@ import java.util.*;
  */
 public final class DateUtil {
 
-    public enum FORMAT_ENUM{
+    public static enum FORMAT_ENUM{
         BASETIME_yyyy("yyyy"),
         BASETIME_MM("MM"),
         BASETIME_dd("dd"),
@@ -682,10 +682,83 @@ public final class DateUtil {
         throw new NullPointerException("one of startDay or endDay is null.");
     }
 
-    public static void main(String[] args) {
-        long l = computerDaysBetween("20210914", "20210915", FORMAT_ENUM.NOSEGMENTATION_yMd.value);
-        System.out.println(l);
+    /**
+     * 计算两个日期之间的天数，不包含结束日期当天.
+     * 如果结束日期小于开始日期，则返回负数天数.
+     *
+     * @param startDay 开始日期
+     * @param endDay 结束日期
+     * @param format 日期格式，开始日期和结束日期格式必须保持一致
+     * @return 天数.
+     */
+    public static long computerDaysBetween(Date startDay, Date endDay, String format){
+        String startString = translateDateToString(startDay, format);
+        String endString = translateDateToString(endDay, format);
+        return computerDaysBetween(startString, endString, format);
     }
 
+    /**
+     * 判断当前时间是否在范围内.
+     * 包含开始时间和结束时间的时间点.
+     *
+     * @param format 时间格式
+     * @param startTime 开始时间
+     * @param endTime 结束时间
+     * @param checkTime 待判断时间
+     * @return 判断结果，范围内 true 不在范围内 false
+     */
+    public static boolean checkDateInRange(String format, String startTime, String endTime, String checkTime){
+        Long startTimestamp = translateDateToTimestamp(startTime, format);
+        Long endTimestamp = translateDateToTimestamp(endTime, format);
+        Long checkTimestamp = translateDateToTimestamp(checkTime, format);
+        if (null == startTimestamp || null == endTimestamp || null == checkTimestamp){
+            throw new NullPointerException();
+        }
+        return startTimestamp <= checkTimestamp && checkTimestamp <= endTimestamp;
+    }
+
+    /**
+     * 判断当前时间是否在范围内.
+     * 包含开始时间和结束时间的时间点.
+     *
+     * @param format 时间格式
+     * @param startTime 开始时间
+     * @param endTime 结束时间
+     * @param checkTime 待判断时间
+     * @return 判断结果，范围内 true 不在范围内 false
+     */
+    public static boolean checkDateInRange(String format, Date startTime, Date endTime, Date checkTime){
+        String startDate = translateDateToString(startTime, format);
+        String endDate = translateDateToString(endTime, format);
+        String checkDate = translateDateToString(checkTime, format);
+        return checkDateInRange(format, startDate, endDate, checkDate);
+    }
+
+    /**
+     * 判断当前时间是否在范围内.
+     * 包含开始时间和结束时间的时间点.
+     *      如果checkEnd=true,则rangeTime为结束时间，表示1970-01-01 00:00:00 至 rangeTime的时间
+     *      如果checkEnd=false,则rangeTime为开始时间时间，表示rangeTime 至 系统当前时间
+     *
+     * @param format 时间格式
+     * @param rangeTime 开始/结束时间
+     * @param checkTime 待判断时间
+     * @param checkEnd 当前范围为结束时间还是开始时间
+     * @return 判断结果，范围内 true 不在范围内 false
+     */
+    public static boolean checkDateInRange(String format, Date rangeTime, Date checkTime, boolean checkEnd){
+        String rangeDate = translateDateToString(rangeTime, format);
+        String checkDate = translateDateToString(checkTime, format);
+        if (checkEnd){
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(1970, Calendar.JANUARY, 1, 0, 0, 0);
+            String judgeDate = translateDateToString(calendar.getTime(), format);
+            return checkDateInRange(format, judgeDate, rangeDate, checkDate);
+        }else {
+            Date date = new Date();
+            String judgeDate = translateDateToString(date, format);
+            return checkDateInRange(format, rangeDate, judgeDate, checkDate);
+        }
+    }
 
 }
