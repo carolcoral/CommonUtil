@@ -1,9 +1,0 @@
-
-z	java:S116"[Rename this field "sniffer_interval" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(şÔ‹ñüÿÿÿÿ8ŠÑªÉ/
-`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Æ²œê8ŠÑªÉ/
-w	java:S116"XRename this field "failure_delay" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›Ú×Ûøÿÿÿÿ8ŠÑªÉ/
-C
-java:S1604"(Make this anonymous inner class a lambda(ƒí¥8ŠÑªÉ/
-v	java:S116"\Rename this field "max_retry_timeout" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®¿¤8ŠÑªÉ/
-‡
-java:S1130"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(Æ²œê8ŠÑªÉ/

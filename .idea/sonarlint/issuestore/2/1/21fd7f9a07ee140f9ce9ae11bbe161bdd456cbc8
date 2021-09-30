@@ -1,21 +1,0 @@
-
-\
-java:S1118":Add a private constructor to hide the implicit public one.(âÎŸ¯úÿÿÿÿ8¯ş‚ò»/
-o
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(”÷‡Ü8¹ş‚ò»/
-S
-java:S26925"10 is a valid index, but is ignored by this check.(äÊåîùÿÿÿÿ8Åş‚ò»/
-O
-java:S1905s"3Remove this unnecessary cast to "NetworkInterface".(¨@8Úÿ‚ò»/
-P
-java:S1905v".Remove this unnecessary cast to "InetAddress".(ò›Ì³üÿÿÿÿ8Üÿ‚ò»/
-^
-java:S3457{"AFormat specifiers should be used instead of string concatenation.(¥¹ÄÃ8Şÿ‚ò»/
-j
-java:S1192"HDefine a constant instead of duplicating this literal "unknown" 3 times.(í¾şèÿÿÿÿÿ8àÿ‚ò»/
-Q
-java:S10665"/Merge this if statement with the enclosing one.(äÊåîùÿÿÿÿ8áÿ‚ò»/
-q
-java:S1104"TMake hostName a static final constant or non-public and provide accessors if needed.(ïŒûÏ8ãÿ‚ò»/
-K
-java:S1444".Make this "public static hostName" field final(ïŒûÏ8äÿ‚ò»/
