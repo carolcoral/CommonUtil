@@ -5,12 +5,18 @@ import org.apache.commons.lang.StringUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /*
  * @version 1.0 created by LXW on 2018/11/8 16:11
  */
-public final class DateUtil {
+public class DateUtil {
 
     public static enum FORMAT_ENUM{
         BASETIME_yyyy("yyyy"),
