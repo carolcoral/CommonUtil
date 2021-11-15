@@ -3,6 +3,7 @@ package site.cnkj.common.utils.data;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
@@ -13,9 +14,9 @@ import java.util.concurrent.TimeUnit;
 public class RedisUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(RedisUtil.class);
 
-    private RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
 
-    private String redisName;
+    private final String redisName;
 
     public RedisUtil(RedisTemplate<String, Object> redisTemplate, String redisName) {
         this.redisTemplate = redisTemplate;
@@ -24,15 +25,18 @@ public class RedisUtil {
 
     /**
      * 获取链接的redis的信息，等于Command <info>
-     * @return
+     * @return .
      */
     public Properties info(){
         try {
-            return redisTemplate.getConnectionFactory().getConnection().info();
+            RedisConnectionFactory connectionFactory = redisTemplate.getConnectionFactory();
+            if (null != connectionFactory){
+                return connectionFactory.getConnection().info();
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return new Properties();
     }
 
 

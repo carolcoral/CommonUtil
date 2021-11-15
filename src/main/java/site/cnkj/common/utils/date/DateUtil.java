@@ -18,41 +18,41 @@ import java.util.TimeZone;
  */
 public class DateUtil {
 
-    public static enum FORMAT_ENUM{
-        BASETIME_yyyy("yyyy"),
-        BASETIME_MM("MM"),
-        BASETIME_dd("dd"),
-        BASETIME_HH("HH"),
-        BASETIME_mm("mm"),
-        BASETIME_ss("ss"),
-        BASETIME_SSS("SSS"),
-        FULLTIMEBY_yMd("yyyy-MM-dd"),
-        FULLTIMEBY_yMdH("yyyy-MM-dd HH"),
-        FULLTIMEBY_yMdHm("yyyy-MM-dd HH:mm"),
-        FULLTIMEBY_yM("yyyy-MM"),
-        FULLTIMEBY_Md("MM-dd"),
-        FULLTIMEBY_Hms("HH:mm:ss"),
-        FULLTIMEBY_Hm("HH:mm"),
-        FULLTIMEBY_ms("mm:ss"),
-        FULLTIMEBY_HmsS("HH:mm:ss.SSS"),
-        NOSEGMENTATION_yM("yyyyMM"),
-        NOSEGMENTATION_yMd("yyyyMMdd"),
-        NOSEGMENTATION_Hm("HHmm"),
-        NOSEGMENTATION_Hms("HHmmss"),
-        NOSEGMENTATION_HmsS("HHmmssSSS"),
-        NOSEGMENTATION_yMdHm("yyyyMMddHHmm"),
-        NOSEGMENTATION_yMdHms("yyyyMMddHHmmss"),
-        NOSEGMENTATION_yMdHmsS("yyyyMMddHHmmssSSS"),
+    public enum FORMAT{
+        BASE_TIME_yyyy("yyyy"),
+        BASE_TIME_MM("MM"),
+        BASE_TIME_dd("dd"),
+        BASE_TIME_HH("HH"),
+        BASE_TIME_mm("mm"),
+        BASE_TIME_ss("ss"),
+        BASE_TIME_SSS("SSS"),
+        FULL_TIME_yMd("yyyy-MM-dd"),
+        FULL_TIME_yMdH("yyyy-MM-dd HH"),
+        FULL_TIME_yMdHm("yyyy-MM-dd HH:mm"),
+        FULL_TIME_yMdHms("yyyy-MM-dd HH:mm:ss"),
+        FULL_TIME_yMdHmsS("yyyy-MM-dd HH:mm:ss.SSS"),
+        FULL_TIME_yM("yyyy-MM"),
+        FULL_TIME_Md("MM-dd"),
+        FULL_TIME_Hms("HH:mm:ss"),
+        FULL_TIME_Hm("HH:mm"),
+        FULL_TIME_ms("mm:ss"),
+        FULL_TIME_HmsS("HH:mm:ss.SSS"),
+        NO_SEGMENTATION_yM("yyyyMM"),
+        NO_SEGMENTATION_yMd("yyyyMMdd"),
+        NO_SEGMENTATION_Hm("HHmm"),
+        NO_SEGMENTATION_Hms("HHmmss"),
+        NO_SEGMENTATION_HmsS("HHmmssSSS"),
+        NO_SEGMENTATION_yMdHm("yyyyMMddHHmm"),
+        NO_SEGMENTATION_yMdHms("yyyyMMddHHmmss"),
+        NO_SEGMENTATION_yMdHmsS("yyyyMMddHHmmssSSS"),
         POINT_yMd("yyyy.MM.dd"),
         POINT_Hms("HH.mm.ss"),
-        FULLTIMEBY_yMdHms("yyyy-MM-dd HH:mm:ss"),
-        FULLTIMEBY_yMdHmsS("yyyy-MM-dd HH:mm:ss.SSS"),
-        FULLTIMEFORMAT_yMd("yyyy年MM月dd日"),
-        FULLTIMEFORMAT_Hms("HH时mm分ss秒"),
-        FULLTIMEFORMAT_yMdHms("yyyy年MM月dd日 HH时mm分ss秒"),
-        FULLTIMEFORMAT_yMdHmsS("yyyy年MM月dd日 HH时mm分ss秒SSS毫秒");
+        FULL_TIME_FORMAT_yMd("yyyy年MM月dd日"),
+        FULL_TIME_FORMAT_Hms("HH时mm分ss秒"),
+        FULL_TIME_FORMAT_yMdHms("yyyy年MM月dd日 HH时mm分ss秒"),
+        FULL_TIME_FORMAT_yMdHmsS("yyyy年MM月dd日 HH时mm分ss秒SSS毫秒");
 
-        FORMAT_ENUM(String value) {
+        FORMAT(String value) {
             this.value = value;
         }
 
@@ -82,7 +82,7 @@ public class DateUtil {
     }
 
     public static String timeStamp2fulltime(Date date){
-        SimpleDateFormat sdf = new SimpleDateFormat(FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
+        SimpleDateFormat sdf = new SimpleDateFormat(FORMAT.FULL_TIME_yMdHms.getValue());
         return sdf.format(date);
     }
 
@@ -143,7 +143,7 @@ public class DateUtil {
             type = "s";
         }
         if (timeFormat == null){
-            timeFormat = FORMAT_ENUM.FULLTIMEBY_yMdHmsS.getValue();
+            timeFormat = FORMAT.FULL_TIME_yMdHmsS.getValue();
         }
         long date = System.currentTimeMillis();
         Long now_time = new Long(1);
@@ -368,7 +368,7 @@ public class DateUtil {
         long delayTime = 0;
         if (executorTime <= 24 && executorTime>0){
             int num = 24 / executorTime;
-            long tomorrowEarlyMorning = getTodayEarlyMorning(translateTimeToDate(getCurrentTime(), FORMAT_ENUM.FULLTIMEBY_yMdHmsS.getValue()), FORMAT_ENUM.FULLTIMEBY_yMdHmsS.getValue());
+            long tomorrowEarlyMorning = getTodayEarlyMorning(translateTimeToDate(getCurrentTime(), FORMAT.FULL_TIME_yMdHmsS.getValue()), FORMAT.FULL_TIME_yMdHmsS.getValue());
             long todayEarlyMorning = tomorrowEarlyMorning - 24*60*60*1000;
             long todayHour = num * executorTime * 3600000 + todayEarlyMorning;
             if (todayHour < getCurrentTime() && getCurrentTime() < tomorrowEarlyMorning){
@@ -431,7 +431,7 @@ public class DateUtil {
      * @return      2020-03-24 19:24:31
      */
     public static String switchTime(String time) throws ParseException {
-        SimpleDateFormat format2 = new SimpleDateFormat(FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
+        SimpleDateFormat format2 = new SimpleDateFormat(FORMAT.FULL_TIME_yMdHms.getValue());
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z");//格式化的表达式
         time = time.replace("Z", " UTC");//是空格+UTC
         Date data = format.parse(time);
@@ -506,7 +506,7 @@ public class DateUtil {
                 !date_format.contains("mm") &&
                 !date_format.contains("ss")){
             //月
-            String toDate = translateTimeToDate(current_time, FORMAT_ENUM.FULLTIMEBY_yM.getValue());
+            String toDate = translateTimeToDate(current_time, FORMAT.FULL_TIME_yM.getValue());
             Integer year = Integer.valueOf(toDate.split("-")[0]);
             Integer month = Integer.valueOf(toDate.split("-")[1]);
             int shang = parseInt / 12;
@@ -521,7 +521,7 @@ public class DateUtil {
                 month = month - 12;
             }
             String i5 = month<10?"0"+String.valueOf(month):String.valueOf(month);
-            Long translateDateToTimestamp = translateDateToTimestamp(String.valueOf(year) + "-" + i5, FORMAT_ENUM.FULLTIMEBY_yM.getValue());
+            Long translateDateToTimestamp = translateDateToTimestamp(String.valueOf(year) + "-" + i5, FORMAT.FULL_TIME_yM.getValue());
             translateTimeToDate = translateTimeToDate(translateDateToTimestamp, date_format);
         }else if ((date_format.contains("YYYY")||date_format.contains("yyyy")) &&
                 !date_format.contains("MM") &&
@@ -530,9 +530,9 @@ public class DateUtil {
                 !date_format.contains("mm") &&
                 !date_format.contains("ss")){
             //年
-            String year = translateTimeToDate(current_time, FORMAT_ENUM.BASETIME_yyyy.getValue());
+            String year = translateTimeToDate(current_time, FORMAT.BASE_TIME_yyyy.getValue());
             String value = String.valueOf(Integer.valueOf(year) + parseInt);
-            Long aLong = translateDateToTimestamp(value, FORMAT_ENUM.BASETIME_yyyy.getValue());
+            Long aLong = translateDateToTimestamp(value, FORMAT.BASE_TIME_yyyy.getValue());
             translateTimeToDate = translateTimeToDate(aLong, date_format);
         }else {
             translateTimeToDate = translateTimeToDate(current_time, date_format);
@@ -614,13 +614,13 @@ public class DateUtil {
      */
     public static List<JSONObject> getAroundTimeList(String startTime, String endTime, int cut){
         List<JSONObject> times = new LinkedList<>();
-        Long startTimestamp = translateDateToTimestamp(startTime, FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue())/1000;
-        Long endTimestamp = translateDateToTimestamp(endTime, FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue())/1000;
+        Long startTimestamp = translateDateToTimestamp(startTime, FORMAT.FULL_TIME_yMdHms.getValue())/1000;
+        Long endTimestamp = translateDateToTimestamp(endTime, FORMAT.FULL_TIME_yMdHms.getValue())/1000;
         List<String> list = splitTimestamp(cut, startTimestamp, endTimestamp);
         for (String s : list) {
             String[] split = s.split(",");
-            Date start_time = translateTimestampToDate(Long.valueOf(split[0]), FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
-            Date end_time = translateTimestampToDate(Long.valueOf(split[1]), FORMAT_ENUM.FULLTIMEBY_yMdHms.getValue());
+            Date start_time = translateTimestampToDate(Long.valueOf(split[0]), FORMAT.FULL_TIME_yMdHms.getValue());
+            Date end_time = translateTimestampToDate(Long.valueOf(split[1]), FORMAT.FULL_TIME_yMdHms.getValue());
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("startTime", start_time);
             jsonObject.put("endTime", end_time);

@@ -278,12 +278,12 @@ public class FileUtil {
     }
 
     public static File getRecoverFileName(String templateName, String paramsNum, String path) throws Exception{
-        String translateTimeToDate = DateUtil.translateTimeToDate(DateUtil.getLastDaysTimestamp(1), DateUtil.FORMAT_ENUM.NOSEGMENTATION_yMd.getValue());
+        String translateTimeToDate = DateUtil.translateTimeToDate(DateUtil.getLastDaysTimestamp(1), DateUtil.FORMAT.NO_SEGMENTATION_yMd.getValue());
         List<String> fileNames = Arrays.asList(
                 templateName,
                 translateTimeToDate,
                 "00",
-                DateUtil.translateTimeToDate(System.currentTimeMillis(), DateUtil.FORMAT_ENUM.NOSEGMENTATION_yMdHms.getValue()),
+                DateUtil.translateTimeToDate(System.currentTimeMillis(), DateUtil.FORMAT.NO_SEGMENTATION_yMdHms.getValue()),
                 HttpCommonUtil.hostName,
                 paramsNum
         );
@@ -297,14 +297,14 @@ public class FileUtil {
 
     public static String getLogFileName(String templateName, String paramsNum, String date_format, int date_num) throws Exception{
         if (StringUtils.isEmpty(date_format)){
-            date_format = DateUtil.FORMAT_ENUM.NOSEGMENTATION_yMdHms.getValue();
+            date_format = DateUtil.FORMAT.NO_SEGMENTATION_yMdHms.getValue();
         }
         String translateTimeToDate = DateUtil.translateTimeToDate(DateUtil.getLastDaysTimestamp(date_num), date_format);
         List<String> fileNames = Arrays.asList(
                 templateName,
                 translateTimeToDate,
                 "00",
-                DateUtil.translateTimeToDate(System.currentTimeMillis(), DateUtil.FORMAT_ENUM.NOSEGMENTATION_yMdHmsS.getValue()),
+                DateUtil.translateTimeToDate(System.currentTimeMillis(), DateUtil.FORMAT.NO_SEGMENTATION_yMdHmsS.getValue()),
                 HttpCommonUtil.hostName,
                 paramsNum
         );

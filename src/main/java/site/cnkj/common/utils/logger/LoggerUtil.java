@@ -71,7 +71,7 @@ public class LoggerUtil {
         private String traceId = getMDC();
         private String requestId = MDC.get("requestId");
         private String hostName = HOST_NAME;//机器名
-        private String time = DateUtil.translateDateToString(new Date(), DateUtil.FORMAT_ENUM.FULLTIMEBY_yMdHmsS.getValue());//时间
+        private String time = DateUtil.translateDateToString(new Date(), DateUtil.FORMAT.FULL_TIME_yMdHmsS.getValue());//时间
         private Long timestamp = new Date().getTime();
         private String className = new Throwable().getStackTrace()[4].getClassName();
         private String methodName = new Throwable().getStackTrace()[4].getMethodName();
