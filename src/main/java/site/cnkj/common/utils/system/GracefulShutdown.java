@@ -33,7 +33,7 @@ public class GracefulShutdown implements TomcatConnectorCustomizer, ApplicationL
             // 指定执行的方法
             shutdown();
             //手动清理内存
-            System.gc();
+            Runtime.getRuntime().gc();
             LOGGER.warn("清理内存完毕，正在退出服务......");
             if (this.connector == null){
                 return;
@@ -42,20 +42,18 @@ public class GracefulShutdown implements TomcatConnectorCustomizer, ApplicationL
             LOGGER.warn("关闭全部连接......");
             Executor executor = this.connector.getProtocolHandler().getExecutor();
             if (executor instanceof ThreadPoolExecutor) {
-                try {
-                    ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executor;
-                    threadPoolExecutor.shutdown();
-                    LOGGER.warn("当前服务线程池被关闭");
-                    if (!threadPoolExecutor.awaitTermination(30, TimeUnit.SECONDS)) {
-                        LOGGER.warn("Tomcat thread pool did not shut down gracefully within 30 seconds. Proceeding with forceful shutdown");
-                    }
-                } catch (InterruptedException ex) {
-                    Thread.currentThread().interrupt();
+                ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executor;
+                threadPoolExecutor.shutdown();
+                LOGGER.warn("当前服务线程池被关闭");
+                if (!threadPoolExecutor.awaitTermination(30, TimeUnit.SECONDS)) {
+                    LOGGER.warn("Tomcat thread pool did not shut down gracefully within 30 seconds. Proceeding with forceful shutdown");
                 }
             }
             this.connector.stop();
         } catch (LifecycleException e) {
             e.printStackTrace();
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -78,5 +76,7 @@ public class GracefulShutdown implements TomcatConnectorCustomizer, ApplicationL
      * 2.flush内存中全部的未处理数据
      * 3.清理服务中全部待处理的数据
      */
-    public void shutdown(){}
+    public void shutdown(){
+        //do something
+    }
 }

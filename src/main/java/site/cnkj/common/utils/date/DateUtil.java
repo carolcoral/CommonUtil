@@ -5,12 +5,18 @@ import org.apache.commons.lang.StringUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /*
  * @version 1.0 created by LXW on 2018/11/8 16:11
  */
-public final class DateUtil {
+public class DateUtil {
 
     public static enum FORMAT_ENUM{
         BASETIME_yyyy("yyyy"),
@@ -631,41 +637,39 @@ public final class DateUtil {
      * @param inputFormat 输入日期格式
      * @param outputFormat 输出日期格式
      * @return 月份区间集合
-     * @throws Exception e
      */
     public static List<String> computerMonth(String startMonth, String endMonth, String inputFormat, String outputFormat) {
         List<String> months = new ArrayList<>();
-        try {
-            Long startTimestamp = translateDateToTimestamp(startMonth, inputFormat);
-            Calendar startDate = Calendar.getInstance();
-            startDate.setTimeInMillis(startTimestamp);
-            int year = startDate.get(Calendar.YEAR);
-            int month = startDate.get(Calendar.MONTH) + 1;
-            Long endTimestamp = translateDateToTimestamp(endMonth, inputFormat);
-            long currentTimestamp = 0L;
-            Calendar calendar = Calendar.getInstance();
-            calendar.clear();
-            while (true){
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month - 1);
-                currentTimestamp = calendar.getTimeInMillis();
-                if (currentTimestamp > endTimestamp){
-                    break;
-                }
-                months.add(translateTimeToDate(currentTimestamp, outputFormat));
-                month = month + 1;
-                if (month > 12){
-                    year = year + 1;
-                    month = 1;
-                }
+        Long startTimestamp = translateDateToTimestamp(startMonth, inputFormat);
+        Long endTimestamp = translateDateToTimestamp(endMonth, inputFormat);
+        if (null == startTimestamp || null == endTimestamp){
+            throw  new NullPointerException("one of startMonth or endMonth parsed resulr is null.");
+        }
+        Calendar startDate = Calendar.getInstance();
+        startDate.setTimeInMillis(startTimestamp);
+        int year = startDate.get(Calendar.YEAR);
+        int month = startDate.get(Calendar.MONTH) + 1;
+        long currentTimestamp;
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        while (true){
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month - 1);
+            currentTimestamp = calendar.getTimeInMillis();
+            if (currentTimestamp > endTimestamp){
+                break;
             }
-        }catch (NullPointerException e){
-            e.printStackTrace();
+            months.add(translateTimeToDate(currentTimestamp, outputFormat));
+            month = month + 1;
+            if (month > 12){
+                year = year + 1;
+                month = 1;
+            }
         }
         return months;
     }
-    
-        /**
+
+    /**
      * 计算两个日期之间的天数，不包含结束日期当天.
      * 如果结束日期小于开始日期，则返回负数天数.
      *
@@ -762,4 +766,5 @@ public final class DateUtil {
             return checkDateInRange(format, rangeDate, judgeDate, checkDate);
         }
     }
+
 }

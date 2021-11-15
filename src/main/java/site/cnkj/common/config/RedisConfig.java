@@ -12,7 +12,7 @@ import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import site.cnkj.common.object.redis.Receiver;
+import site.cnkj.common.object.Receiver;
 import site.cnkj.common.utils.data.RedisUtil;
 
 /**
