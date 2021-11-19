@@ -19,7 +19,7 @@
 
 > `2020-7-21 11:20:14` fix some expire bug from [RedisUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/RedisUtil.java).
 
-> `2020-7-20 14:17:00` New date function `String formatDateByReg(String date_format, int parseInt)` for format date by The date-format [DateUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/DateUtil.java).For example like this:
+> `2020-7-20 14:17:00` New date function `String formatDateByReg(String date_format, int parseInt)` for format date by The date-format [DateUtil](https://github.com/carolcoral/CommonUtil/blob/master/src/main/java/site/cnkj/utils/DateUtil.java) .For example like this:
 
 ```java
 public static void main(String[] args) {
