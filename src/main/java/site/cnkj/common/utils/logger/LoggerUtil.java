@@ -3,14 +3,12 @@ package site.cnkj.common.utils.logger;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.lang.Nullable;
 import site.cnkj.common.utils.bean.ReflectionUtil;
-import site.cnkj.common.utils.data.GlobalId;
 import site.cnkj.common.utils.date.DateUtil;
 
 import java.io.PrintWriter;
@@ -20,13 +18,16 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
-/*
- * @version 1.0 created by LXW on 2019/4/1 9:13
- */
+/**
+ * 日志打印
+ *
+ * @author Liu XueWen, 2021-12-06
+ * @version EasyUtil v0.3.0
+ **/
+@Slf4j
 public class LoggerUtil {
-
-    private static final Logger log = LoggerFactory.getLogger(LoggerUtil.class);
 
     enum Level{
         INFO("INFO"),
@@ -71,7 +72,7 @@ public class LoggerUtil {
         private String traceId = getMDC();
         private String requestId = MDC.get("requestId");
         private String hostName = HOST_NAME;//机器名
-        private String time = DateUtil.translateDateToString(new Date(), DateUtil.FORMAT.FULL_TIME_YMD_HMS_S.getValue());//时间
+        private String time = DateUtil.translateDateToString(new Date(), "yyyy-MM-dd HH:mm:ss.SSS");//时间
         private Long timestamp = new Date().getTime();
         private String className = new Throwable().getStackTrace()[4].getClassName();
         private String methodName = new Throwable().getStackTrace()[4].getMethodName();
@@ -89,7 +90,7 @@ public class LoggerUtil {
 
     static String getMDC(){
         if (StringUtils.isEmpty(MDC.get(TRACE_ID))){
-            String traceID = "TraceID: " + GlobalId.generateNextId();
+            String traceID = "TraceID: " + UUID.randomUUID().toString();
             MDC.put(TRACE_ID, traceID);
         }
         return MDC.get(TRACE_ID).split(":")[1].trim();
@@ -160,9 +161,7 @@ public class LoggerUtil {
         loggerEntity.setInfo(message);
         loggerEntity.setStackTrace(throwable.getMessage());
         JSONObject jsonSource = JSON.parseObject(loggerEntity.toString());
-        for (Map.Entry<String, Object> entry : fields.entrySet()) {
-            jsonSource.put(entry.getKey(), entry.getValue());
-        }
+        jsonSource.putAll(fields);
         logger(level, JSON.toJSONString(jsonSource));
     }
 
@@ -173,10 +172,26 @@ public class LoggerUtil {
         loggerEntity.setInfo(message);
         loggerEntity.setStackTrace(formatException(e));
         JSONObject jsonSource = JSON.parseObject(loggerEntity.toString());
-        for (Map.Entry<String, Object> entry : fields.entrySet()) {
-            jsonSource.put(entry.getKey(), entry.getValue());
-        }
+        jsonSource.putAll(fields);
         logger(level, JSON.toJSONString(jsonSource));
+    }
+
+    private static String formatInputString(String message, Object... args){
+        StringBuilder stringBuilder = new StringBuilder();
+        String[] messages = message.split("\\{\\}", -1);
+        for (int i = 0; i < messages.length; i++) {
+            stringBuilder.append(messages[i]);
+            if (i < args.length){
+                Object arg = args[i];
+                stringBuilder.append(String.valueOf(arg));
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    public static void info(String message, Object... args){
+        String inputString = formatInputString(message, args);
+        message(Level.INFO, inputString);
     }
 
     public static void info(String message){
@@ -207,6 +222,11 @@ public class LoggerUtil {
         message(Level.WARN, message);
     }
 
+    public static void warn(String message, Object... args){
+        String inputString = formatInputString(message, args);
+        message(Level.WARN, inputString);
+    }
+
     public static void warn(String message, Map<String, Object> fields){
         fields.remove("data");
         map(Level.WARN, message, fields);
@@ -228,8 +248,42 @@ public class LoggerUtil {
         mapException(Level.WARN, message, fields, e);
     }
 
+    public static void debug(String message){
+        message(Level.DEBUG, message);
+    }
+
+    public static void debug(String message, Object... args){
+        String inputString = formatInputString(message, args);
+        message(Level.DEBUG, inputString);
+    }
+
+    public static void debug(String message, Map<String, Object> fields){
+        map(Level.DEBUG, message, fields);
+    }
+
+    public static void debug(String message, Throwable throwable){
+        throwable(Level.DEBUG, message, throwable);
+    }
+
+    public static void debug(String message, Exception e){
+        exception(Level.DEBUG, message, e);
+    }
+
+    public static void debug(String message, Map<String, Object> fields, Throwable throwable){
+        mapThrowable(Level.DEBUG, message, fields, throwable);
+    }
+
+    public static void debug(String message, Map<String, Object> fields, Exception e){
+        mapException(Level.DEBUG, message, fields, e);
+    }
+
     public static void error(String message){
         message(Level.ERROR, message);
+    }
+
+    public static void error(String message, Object... args){
+        String inputString = formatInputString(message, args);
+        message(Level.ERROR, inputString);
     }
 
     public static void error(String message, Map<String, Object> fields){
